@@ -1,12 +1,12 @@
-import Link from 'next/link'
+import React from 'react';
+import HeaderLeft from './header-left';
+import HeaderBar from './header-bar';
 
-export default function Header() {
-  return (
-    <h2 className="text-2xl md:text-4xl font-bold tracking-tight md:tracking-tighter leading-tight mb-20 mt-8">
-      <Link href="/">
-        <a className="hover:underline">Blog</a>
-      </Link>
-      .
-    </h2>
-  )
-}
+const Header = () => (
+  <nav className="flex h-16">
+    <HeaderLeft />
+    <HeaderBar />
+  </nav>
+);
+
+export default Header;

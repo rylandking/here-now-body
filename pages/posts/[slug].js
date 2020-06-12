@@ -2,15 +2,16 @@ import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
 import Container from '../../components/container'
 import PostBody from '../../components/post-body'
-import MoreStories from '../../components/more-stories'
+import MoreStories from '../../components/all-stories'
 import Header from '../../components/header'
 import PostHeader from '../../components/post-header'
 import SectionSeparator from '../../components/section-separator'
 import Layout from '../../components/layout'
+import Meta from '../../components/meta'
 import { getAllPostsWithSlug, getPostAndMorePosts } from '../../lib/api'
 import PostTitle from '../../components/post-title'
 import Head from 'next/head'
-import { CMS_NAME } from '../../lib/constants'
+import { SITE_NAME } from '../../lib/constants'
 
 export default function Post({ post, morePosts, preview }) {
   const router = useRouter()
@@ -28,13 +29,18 @@ export default function Post({ post, morePosts, preview }) {
             <article>
               <Head>
                 <title>
-                  {post.title} | Next.js Blog Example with {CMS_NAME}
+                  {post.title} | {SITE_NAME}
                 </title>
-                {/* <meta property="og:image" content={post.ogImage.url} /> */}
+                <Meta 
+                  title= {post.title}
+                  thumbnailImage={post.thumbnailImage}
+                  description={post.description}
+                  slug={post.slug}
+                />
               </Head>
               <PostHeader
                 title={post.title}
-                coverImage={post.coverImage}
+                thumbnailImage={post.thumbnailImage}
                 date={post.date}
                 author={post.author}
               />
