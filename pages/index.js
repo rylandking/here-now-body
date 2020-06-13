@@ -1,4 +1,3 @@
-import AllStories from '../components/all-stories'
 import Cards from '../components/cards'
 import Categories from '../components/categories'
 import CategoriesControl from '../components/categories-control'
@@ -7,14 +6,16 @@ import Layout from '../components/layout'
 import { getAllPostsForHome } from '../lib/api'
 import Head from 'next/head'
 
+import { GlobalProvider } from '../context/GlobalState'
+
 export default function Index({ allPosts, preview }) {
   return (
-    <>
+    <GlobalProvider>
       <Layout preview={preview}>
         <Head>
           <title>Here Now Body</title>
           <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-          <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+          <meta httpEquiv="X-UA-Compatible" content="ie=edge"/>
           <meta property="og:type" content="website"/>
           <meta property="og:title" content="Here Now Body by Tara Dirocco"/>
           <meta name="twitter:title" content="PLACEHOLDER"/>
@@ -42,7 +43,7 @@ export default function Index({ allPosts, preview }) {
         </div>
         
       </Layout>
-    </>
+    </GlobalProvider>
   )
 }
 

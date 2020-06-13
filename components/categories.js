@@ -1,9 +1,9 @@
-import React from 'react';
-import { useState } from "react"
+import React, { useContext } from 'react';
+import { GlobalContext, GlobalProvider } from '../context/GlobalState';
 
 const Categories = ({posts}) => {
-  // Delcare what category should be shown
-  const [categoryView, setCategory] = useState('all');
+  // Use context to access global state
+  const {categoryView, setCategory} = useContext(GlobalContext);
 
   let uniqueCategorySlugs = [];
   
@@ -21,7 +21,8 @@ const Categories = ({posts}) => {
 
         {uniqueCategorySlugs.map((uniqueCategorySlug) => (
           <div 
-          onClick={() => setCategory(categoryView === uniqueCategorySlug ? 'all' : uniqueCategorySlug)} 
+          onClick={() => setCategory(uniqueCategorySlug)} 
+          // onClick={() => setCategory(categoryView === uniqueCategorySlug ? 'all' : uniqueCategorySlug)} 
           className={`flex justify-center h-24 text-xs font-medium cursor-pointer hover:bg-purple-100 
             ${(categoryView === uniqueCategorySlug) ? "bg-purple-100":""}
           `}
