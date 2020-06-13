@@ -16,13 +16,12 @@ const Categories = ({posts}) => {
   });
 
   return (
-    <div className={`${filterView ? "": "hidden"} md:block`}>
-      <div className="w-100 md:w-56 grid grid-flow-row grid-cols-2 border-r">
+    <div className={`${filterView ? "w-full": "hidden"} md:block`}>
+      <div className={`md:w-56 grid grid-flow-row grid-cols-2 border-r`}>
 
         {uniqueCategorySlugs.map((uniqueCategorySlug) => (
           <div 
-          onClick={() => setCategory(uniqueCategorySlug)} 
-          // onClick={() => setCategory(categoryView === uniqueCategorySlug ? 'all' : uniqueCategorySlug)} 
+          onClick={() => setCategory(uniqueCategorySlug)}
           className={`flex justify-center h-24 text-xs font-medium cursor-pointer hover:bg-purple-100 
             ${(categoryView === uniqueCategorySlug) ? "bg-purple-100":""}
           `}
