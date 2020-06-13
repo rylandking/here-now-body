@@ -1,17 +1,24 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Link from 'next/link'
+
+import { GlobalContext } from '../context/GlobalState';
 
 const Card = ({
   title,
   thumbnailImage,
   slug,
   categoryNew,
+  categorySlug,
   type 
 }) => {   
+  // Use context to access global state
+  const {categoryView} = useContext(GlobalContext);
+
   return (
     <Link as={`/posts/${slug}`} href="/posts/[slug]">
     <div
-      className="h-56 col-span-1 rounded-lg pt-4 pb-2 px-4 flex flex-col justify-between leading-normal cursor-pointer bg-cover"
+      className={`h-56 col-span-1 rounded-lg pt-4 pb-2 px-4 flex flex-col justify-between leading-normal cursor-pointer bg-cover
+      ${(categoryView === categorySlug || categoryView === 'all') ? "flex":"hidden"}`}
       style={{ backgroundImage: 'url(' + thumbnailImage + '?h=200)' }}
     >
       <div className="mb-8">

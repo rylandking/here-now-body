@@ -5,6 +5,11 @@ export default (state, action) => {
         ...state,
         categoryView: state.categoryView === action.payload ? 'all' : action.payload
       }
+    case 'SHOW_FILTERS':
+      return {
+        ...state,
+        filterView: state.filterView ? false : true
+      }
     default: 
       return state;
   }

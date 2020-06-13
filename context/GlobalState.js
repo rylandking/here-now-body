@@ -4,7 +4,8 @@ import AppReducer from './AppReducer'
 // All global state can go here. Can create other files just like this one if it gets too big.
 // Tutorial https://www.youtube.com/watch?v=XuFDcZABiDQ 
 const initalState = {
-  categoryView: 'all'
+  categoryView: 'all',
+  filterView: false
 }
 
 // Create context
@@ -22,9 +23,18 @@ export const GlobalProvider = ({children}) => {
     })
   }
 
+  function showFilters(filterView) {
+    dispatch({
+      type: 'SHOW_FILTERS',
+      payload: !filterView
+    })
+  }
+
   return (<GlobalContext.Provider value={{
     categoryView:state.categoryView,
-    setCategory
+    setCategory,
+    filterView:state.filterView,
+    showFilters
   }}>
     {children}
   </GlobalContext.Provider>)

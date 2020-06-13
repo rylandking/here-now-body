@@ -1,16 +1,18 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
+import { GlobalContext, GlobalProvider } from '../context/GlobalState';
 
 const CategoriesControl = () => {
-  const [isCategories, togglePannel] = useState(false);
+   // Use context to access global state
+   const {filterView, showFilters} = useContext(GlobalContext);
 
   return (
     <div
-      onClick={() => togglePannel(!isCategories)}
+      onClick={() => showFilters(filterView) }
       className="flex md:hidden absolute h-12 w-full bottom-0 left-0 bg-purple-600 text-white cursor-pointer"
     >
       <div className="flex h-full w-full justify-center">
         <span className="self-center text-sm">
-          {isCategories ? 'View Articles' : 'Show Categories'}
+          {filterView ? 'Show Categories' : 'View Articles'}
         </span>
       </div>
     </div>
