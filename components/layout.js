@@ -1,11 +1,9 @@
-import Alert from '../components/alert'
 import TaraTab from './tara-tab'
 
-export default function Layout({ preview, children }) {
+export default function Layout({ children }) {
   return (
     <>
-      <div className="min-h-screen">
-        <Alert preview={preview} />
+      <div className="min-h-screen">   
         <main>{children}</main>
       </div>
       <TaraTab />

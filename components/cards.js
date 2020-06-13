@@ -20,8 +20,9 @@ const Cards = ({ posts }) => {
           date={post.date}
           author={post.author}
           slug={post.slug}
-          description={post.description}
+          bgColor={post.bgColor}
           categoryNew={post.categoryNew.name}
+          bgColor={post.categoryNew.bgColor}
           categorySlug={post.categoryNew.name.replace(/\s+/g, '-').toLowerCase()}
           type={post.type}
         />

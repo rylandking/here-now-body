@@ -8,10 +8,10 @@ import Head from 'next/head'
 
 import { GlobalProvider } from '../context/GlobalState'
 
-export default function Index({ allPosts, preview }) {
+export default function Index({ allPosts }) {
   return (
     <GlobalProvider>
-      <Layout preview={preview}>
+      <Layout>
         <Head>
           <title>Here Now Body</title>
           <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
