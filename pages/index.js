@@ -10,6 +10,11 @@ import Head from 'next/head'
 import { GlobalProvider } from '../context/GlobalState'
 
 export default function Index({ allPosts }) {
+    
+  let metaDataName = allPosts[0].metaData.name;
+  let metaDataDescription = allPosts[0].metaData.description;
+  let metaDataImage = allPosts[0].metaData.image;
+  
   return (
     <GlobalProvider>
       <Layout>
@@ -18,18 +23,18 @@ export default function Index({ allPosts }) {
           <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
           <meta httpEquiv="X-UA-Compatible" content="ie=edge"/>
           <meta property="og:type" content="website"/>
-          <meta property="og:title" content="Here Now Body by Tara Dirocco"/>
-          <meta name="twitter:title" content="PLACEHOLDER"/>
-          <meta property="description" content="PLACEHOLDER"/>
-          <meta property="og:description" content="PLACEHOLDER"/>
-          <meta name="twitter:description" content="PLACEHOLDER"/>
-          <meta property="og:image" content="PLACEHOLDER"/>
+          <meta property="og:title" content={metaDataName}/>
+          <meta name="twitter:title" content={metaDataName}/>
+          <meta property="description" content={metaDataDescription}/>
+          <meta property="og:description" content={metaDataDescription}/>
+          <meta name="twitter:description" content={metaDataDescription}/>
+          <meta property="og:image" content={metaDataImage}/>
           <meta property="og:image:height" content="630"/>
           <meta property="og:image:width" content="1200"/>
-          <meta property="og:image" content="PLACEHOLDER"/>
-          <meta name="twitter:image" content="PLACEHOLDER"/>      
+          <meta property="og:image" content={metaDataImage}/>
+          <meta name="twitter:image" content={metaDataImage}/>      
           <meta name="twitter:card" content="summary_large_image"/>  
-          <meta property="og:site_name" content="Here Now Body" />
+          <meta property="og:site_name" content={metaDataName} />
           <meta name="twitter:site" content="@herenowbody"/>
           <meta name="twitter:creator" content="@herenowbody"/>
         </Head>
