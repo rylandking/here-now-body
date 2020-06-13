@@ -18,7 +18,8 @@ const Cards = ({ posts }) => {
           title={post.title}
           thumbnailImage={post.thumbnailImage}
           date={post.date}
-          author={post.author}
+          contentType={post.contentType.name}
+          contentTypeIcon={post.contentType.icon}
           slug={post.slug}
           bgColor={post.bgColor}
           categoryNew={post.categoryNew.name}
