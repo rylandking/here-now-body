@@ -6,12 +6,17 @@ const Categories = ({posts}) => {
   const {categoryView, setCategory, filterView} = useContext(GlobalContext);
 
   let uniqueCategorySlugs = [];
-  
+  let categoryAssets = [];
+
   posts.map(post => {
     let categorySlug = post.categoryNew.name.replace(/\s/g , "-").toLowerCase();
+    let icon = post.categoryNew.icon  
 
     if (uniqueCategorySlugs.indexOf(categorySlug) === -1) {
-      uniqueCategorySlugs.push(categorySlug)      
+      // Adds to the array so it's a part of the next check
+      uniqueCategorySlugs.push(categorySlug)  
+      // Adds the assets needed to produce the dynamic JSX
+      categoryAssets.push({categorySlug, icon})  
     } 
   });
 
@@ -19,28 +24,21 @@ const Categories = ({posts}) => {
     <div className={`${filterView ? "w-full": "hidden"} md:block`}>
       <div className={`md:w-56 grid grid-flow-row grid-cols-2 border-r`}>
 
-        {uniqueCategorySlugs.map((uniqueCategorySlug) => (
+        {categoryAssets.map((categoryAsset) => (
           <div 
-          onClick={() => setCategory(uniqueCategorySlug)}
+          onClick={() => setCategory(categoryAsset.categorySlug)}
           className={`flex justify-center h-24 text-xs font-medium cursor-pointer hover:bg-purple-100 
-            ${(categoryView === uniqueCategorySlug) ? "bg-purple-100":""}
+            ${(categoryView === categoryAsset.categorySlug) ? "bg-purple-100":""}
           `}
-          key={uniqueCategorySlug}>
+          key={categoryAsset.categorySlug}>
             <div className="block self-center">
-                <div className="flex justify-center mb-1">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="22"
-                    height="22"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12z" />
-                  </svg>
+                <div className="flex justify-center mb-2">
+                  <img src={categoryAsset.icon} alt="" style={{width:'24px', height:'24px'}}/>
                 </div>
-                <span className="capitalize">{uniqueCategorySlug.replace(/-/g, ' ')}</span>
+                <span className="capitalize">{categoryAsset.categorySlug.replace(/-/g, ' ')}</span>
             </div>
           </div>
-        ))}    
+        ))} 
     
       </div>
     </div>
