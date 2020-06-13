@@ -1,9 +1,17 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import Card from './card';
 
+import { GlobalContext } from '../context/GlobalState';
+
 const Cards = ({ posts }) => {
+  // Use context to access global state
+  const {filterView} = useContext(GlobalContext);
+
   return (
-    <div className="p-5 grid grid-flow-row grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 h-full w-full articles-w overflow-y-scroll">
+    <div className={`
+      p-5 grid grid-flow-row grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 h-full w-full articles-w overflow-y-scroll
+      ${filterView ? "hidden": ""}
+      `}>
       {posts.map((post) => (
         <Card 
           key={post.slug}

@@ -3,7 +3,7 @@ import { GlobalContext } from '../context/GlobalState';
 
 const Categories = ({posts}) => {
   // Use context to access global state
-  const {categoryView, setCategory} = useContext(GlobalContext);
+  const {categoryView, setCategory, filterView} = useContext(GlobalContext);
 
   let uniqueCategorySlugs = [];
   
@@ -16,7 +16,7 @@ const Categories = ({posts}) => {
   });
 
   return (
-    <div className="hidden md:block">
+    <div className={`${filterView ? "": "hidden"} md:block`}>
       <div className="w-100 md:w-56 grid grid-flow-row grid-cols-2 border-r">
 
         {uniqueCategorySlugs.map((uniqueCategorySlug) => (
