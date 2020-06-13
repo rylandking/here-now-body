@@ -3,6 +3,7 @@ import Categories from '../components/categories'
 import CategoriesControl from '../components/categories-control'
 import Header from '../components/header'
 import Layout from '../components/layout'
+import TaraTab from '../components/tara-tab'
 import { getAllPostsForHome } from '../lib/api'
 import Head from 'next/head'
 
@@ -41,7 +42,7 @@ export default function Index({ allPosts }) {
           </div>
           <CategoriesControl />
         </div>
-        
+        <TaraTab posts={allPosts} />
       </Layout>
     </GlobalProvider>
   )

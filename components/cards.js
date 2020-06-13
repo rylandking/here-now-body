@@ -25,7 +25,6 @@ const Cards = ({ posts }) => {
           categoryNew={post.categoryNew.name}
           bgColor={post.categoryNew.bgColor}
           categorySlug={post.categoryNew.name.replace(/\s+/g, '-').toLowerCase()}
-          type={post.type}
         />
       ))}
       <style jsx>{`

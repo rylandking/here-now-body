@@ -33,7 +33,7 @@ const Categories = ({posts}) => {
           key={categoryAsset.categorySlug}>
             <div className="block self-center">
                 <div className="flex justify-center mb-2">
-                  <img src={categoryAsset.icon} alt="" style={{width:'24px', height:'24px'}}/>
+                  <img src={categoryAsset.icon} alt={categoryAsset.categorySlug} style={{width:'24px', height:'24px'}}/>
                 </div>
                 <span className="capitalize">{categoryAsset.categorySlug.replace(/-/g, ' ')}</span>
             </div>

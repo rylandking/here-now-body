@@ -11,8 +11,7 @@ const Card = ({
   contentTypeIcon,
   categoryNew,
   categorySlug,
-  bgColor,
-  type 
+  bgColor
 }) => {   
   // Use context to access global state
   const {categoryView} = useContext(GlobalContext);
