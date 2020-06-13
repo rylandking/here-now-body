@@ -1,5 +1,3 @@
-import TaraTab from './tara-tab'
-
 export default function Layout({ children }) {
   return (
     <>

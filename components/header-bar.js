@@ -22,7 +22,7 @@ const HeaderBar = () => {
             <input
               className="bg-gray-200 placeholder-gray-600 text-sm font-light focus:outline-none rounded-l-none rounded-r-lg h-12 pr-0 pl-3 block w-full appearance-none leading-normal"
               type="email"
-              placeholder="Get one new case study every week"
+              placeholder="Get new content each week"
             />
           </div>
           <button className="bg-purple-600 hover:bg-purple-500 w-30 text-white text-xs font-medium ml-2 h-12 px-4 rounded leading-5">

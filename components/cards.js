@@ -21,7 +21,6 @@ const Cards = ({ posts }) => {
           contentType={post.contentType.name}
           contentTypeIcon={post.contentType.icon}
           slug={post.slug}
-          bgColor={post.bgColor}
           categoryNew={post.categoryNew.name}
           bgColor={post.categoryNew.bgColor}
           categorySlug={post.categoryNew.name.replace(/\s+/g, '-').toLowerCase()}

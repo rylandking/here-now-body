@@ -1,24 +1,22 @@
 import Avatar from '../components/avatar'
-import Date from '../components/date'
 import CoverImage from '../components/cover-image'
-import PostTitle from '../components/post-title'
 
-export default function PostHeader({ title, thumbnailImage, date, author }) {
+export default function PostHeader({ title, thumbnailImage, categoryNew, contentType, contentTypeIcon, bgColor, author }) {
   return (
     <>
-      <PostTitle>{title}</PostTitle>
-      <div className="hidden md:block md:mb-12">
-        <Avatar name={author.name} picture={author.picture} />
-      </div>
-      <div className="mb-8 md:mb-16 -mx-5 sm:mx-0">
-        <CoverImage title={title} url={thumbnailImage} />
+      <div className="mb-8 mx-0 sm:mx-10 md:mx-12 lg:mx-48 xl:mx-64">
+        <CoverImage 
+          title={title} 
+          url={thumbnailImage} 
+          categoryNew={categoryNew} 
+          contentType={contentType} 
+          contentTypeIcon={contentTypeIcon}  
+          bgColor={bgColor}  
+        />
       </div>
       <div className="max-w-2xl mx-auto">
         <div className="block md:hidden mb-6">
           <Avatar name={author.name} picture={author.picture} />
-        </div>
-        <div className="mb-6 text-lg">
-          <Date dateString={date} />
         </div>
       </div>
     </>

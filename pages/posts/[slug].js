@@ -3,7 +3,6 @@ import ErrorPage from 'next/error'
 import Container from '../../components/container'
 import PostBody from '../../components/post-body'
 import MoreStories from '../../components/all-stories'
-import Header from '../../components/header'
 import PostHeader from '../../components/post-header'
 import SectionSeparator from '../../components/section-separator'
 import Layout from '../../components/layout'
@@ -20,8 +19,6 @@ export default function Post({ post, morePosts, preview }) {
   }
   return (
     <Layout preview={preview}>
-      <Container>
-        <Header />
         {router.isFallback ? (
           <PostTitle>Loading…</PostTitle>
         ) : (
@@ -31,26 +28,32 @@ export default function Post({ post, morePosts, preview }) {
                 <title>
                   {post.title} | {SITE_NAME}
                 </title>
-                <Meta 
+              </Head>
+              <Meta 
                   title= {post.title}
                   thumbnailImage={post.thumbnailImage}
                   description={post.description}
                   slug={post.slug}
-                />
-              </Head>
+              />
               <PostHeader
                 title={post.title}
                 thumbnailImage={post.thumbnailImage}
-                date={post.date}
+                categoryNew={post.categoryNew.name}
+                bgColor={post.categoryNew.bgColor}
+                contentType={post.contentType.name}
+                contentTypeIcon={post.contentType.icon}
                 author={post.author}
               />
-              <PostBody content={post.content} />
-            </article>
-            <SectionSeparator />
-            {morePosts.length > 0 && <MoreStories posts={morePosts} />}
+              <Container>
+                <PostBody content={post.content} />
+              </Container>
+              </article>
+              <Container>
+              <SectionSeparator />
+                {morePosts.length > 0 && <MoreStories posts={morePosts} />}
+              </Container>
           </>
         )}
-      </Container>
     </Layout>
   )
 }
