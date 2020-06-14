@@ -6,6 +6,7 @@ import PostHeader from '../../components/post-header'
 import Layout from '../../components/layout'
 import Meta from '../../components/meta'
 import ClickToShare from '../../components/click-to-share'
+import Testimonials from '../../components/testimonials'
 import { getAllPostsWithSlug, getPostAndMorePosts } from '../../lib/api'
 import PostTitle from '../../components/post-title'
 import Head from 'next/head'
@@ -54,6 +55,7 @@ export default function Post({ post, morePosts, preview }) {
                   title={post.title}
                   slug={post.slug}
                 />
+                <Testimonials />
               </Container>
               </article>
           </>
