@@ -31,8 +31,8 @@ const HeaderBar = () => {
         </div>
 
         <div className="w-full md:w-1/4 flex justify-end flex-shrink-0 text-sm font-semibold pr-3 flex items-center">
-          <div className="text-sm font-semibold text-purple-700 mr-6 md:hidden">
-            <a href="/">VIRTUAL STUDIO</a>
+          <div className="text-sm font-semibold text-purple-700 mr-4 md:hidden">
+            <a href="/">GET NEW CONTENT</a>
           </div>
           <a href="/" className="mr-4">
             <svg

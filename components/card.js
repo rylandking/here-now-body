@@ -35,7 +35,7 @@ const Card = ({
                 <span className="pl-1">{contentType}</span>
               </p>
             </div>
-            <div className="text-sm text-center justify-center">
+            <div className="flex text-sm text-center justify-center">
               <div className={`inline-flex items-center justify-center w-32 py-1 rounded-full text-xs font-normal leading-5 ${bgColor} text-gray-700`}>
                 <span>{categoryNew}</span>
               </div>

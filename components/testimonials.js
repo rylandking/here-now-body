@@ -6,7 +6,7 @@ export default function Testimonials({testimonialData}) {
   testimonialData[1].spacing = 'mt-10 md:ml-10 md:mt-0';
   
   return (
-    <div className="max-w-2xl mx-auto mt-16 mb-32 px-16 sm:px-24 md:px-12 md:flex w-full">
+    <div className="max-w-2xl mx-auto mt-16 mb-32 px-8 sm:px-24 md:px-12 md:flex w-full">
       {testimonialData.map((testimonial) => (
         <Testimonial
           key={testimonial.url}

@@ -14,7 +14,7 @@ export default function PostBody({ content, thanks, signOff, tweetEmbed }) {
       <span className="text-lg">
         <BlockContent blocks={thanks} className={markdownStyles.markdown} />
       </span>
-      <div className="flex justify-center mt-4">
+      <div className="flex justify-center mt-4 mx-10 md:mx-0">
         <TwitterTweetEmbed tweetId={tweetId} />
       </div>
       <style jsx global>{`
