@@ -4,7 +4,7 @@ export default function Meta({title, description, thumbnailImage}) {
   return (
     <Head>
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-      <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+      <meta httpEquiv="X-UA-Compatible" content="ie=edge"/>
       <meta property="og:type" content="article" />
       <meta property="og:title" content={title} />
       <meta name="twitter:title" content={title}/>

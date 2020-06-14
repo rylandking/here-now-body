@@ -1,6 +1,4 @@
-import cn from 'classnames'
 import Link from 'next/link'
-import { imageBuilder } from '../lib/api'
 
 export default function CoverImage({ title, url, categoryNew, contentType, contentTypeIcon, bgColor, slug }) {
   
@@ -12,9 +10,7 @@ export default function CoverImage({ title, url, categoryNew, contentType, conte
       <Link href="/">
         <a>
           <div>
-            <svg fill="currentColor" width="40" height="40" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clipRule="evenodd" fill="#fff"></path>
-            </svg>
+            <svg fill="currentColor" width="32" height="32" viewBox="0 0 20 20"><path fillRule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clipRule="evenodd" fill="#fff"></path></svg>
           </div>
         </a>
       </Link>
