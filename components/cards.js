@@ -6,12 +6,12 @@ import { GlobalContext } from '../context/GlobalState';
 const Cards = ({ posts }) => {
   // Use context to access global state
   const {filterView} = useContext(GlobalContext);
-
+  
   return (
     <div className={`
-      p-5 grid grid-flow-row grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 h-full w-full articles-w overflow-y-scroll
+      p-5 grid grid-flow-row grid-row-height xs:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 w-full h-full overflow-y-scroll
       ${filterView ? "hidden": ""}
-      `}>
+    `}>
       {posts.map((post) => (
         <Card 
           key={post.slug}
@@ -27,6 +27,9 @@ const Cards = ({ posts }) => {
         />
       ))}
       <style jsx>{`
+        .grid-row-height {
+          grid-auto-rows: 14rem;
+        }
         @media (min-width: 768px) {
           .articles-w {
             width: calc(100% - 222px);
