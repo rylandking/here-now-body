@@ -1,6 +1,7 @@
 import React from 'react';
 
 export default function Avatar({ name, picture }) {
+  
   return (
     <a href="https://twitter.com/herenowbody" target="_blank">
       <div className="hidden md:flex fixed h-12 w-40 bottom-0 right-0 justify-center border rounded bg-white text-base font-light bg-white">

@@ -1,28 +1,30 @@
 import React from 'react';
 
-export default function Testimonial() {
+export default function Testimonial({name, workTitle, image, quote, url, spacing}) {
+
   return (
     <>
-      <div className="flex justify-start text-sm font-light">Hands down the best marketing newsletter I'm subscribed to.</div>
-      <a href="" target="_blank">
-      <div className="flex justify-start mt-3">
+    <div className={`block md:w-1/2 ${spacing}`}>
+      <div className="flex justify-start text-sm font-light italic">{quote}</div>
+      <a href={url} target="_blank">
+      <div className="flex justify-start mt-4">
         <img
           className="h-10 w-10 ml-1 mr-3 rounded-full"
-          src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+          src={image}
           alt=""
         />
         <div className="block">
-          <p className="font-semibold">Ryland King</p>
-          <p className="font-light text-sm">Physical Therapist, M.D.</p>
+          <p className="font-semibold">{name}</p>
+          <p className="font-light text-sm">{workTitle}</p>
         </div>
       </div>
       </a>
-      
-      <style jsx>{`
-          a {
-            text-decoration: none;
-          }
-      `}</style>
+    </div>
+    <style jsx>{`
+        a {
+          text-decoration: none;
+        }
+    `}</style>
     </>
   )
 }

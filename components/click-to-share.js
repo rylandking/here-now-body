@@ -28,7 +28,7 @@ export default function ClickToShare({title, slug}) {
           }
           @media only screen and (max-width: 600px) {
             .line {
-              display: none;
+              width: 20px
             }
           }
       `}</style>
