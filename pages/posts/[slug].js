@@ -13,7 +13,7 @@ import PostTitle from '../../components/post-title'
 import Head from 'next/head'
 import { SITE_NAME } from '../../lib/constants'
 
-export default function Post({ post, preview, testimonialData }) {
+export default function Post({ post, preview, testimonialData, serializers }) {
   const router = useRouter()
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />
@@ -32,10 +32,10 @@ export default function Post({ post, preview, testimonialData }) {
                 </title>
               </Head>
               <Meta 
-                  title= {post.title}
-                  thumbnailImage={post.thumbnailImage}
-                  description={post.description}
-                  slug={post.slug}
+                title= {post.title}
+                thumbnailImage={post.thumbnailImage}
+                description={post.description}
+                slug={post.slug}
               />
               <PostHeader
                 title={post.title}
@@ -51,7 +51,7 @@ export default function Post({ post, preview, testimonialData }) {
                   content={post.content} 
                   thanks={post.thanksJoinListCTA} 
                   signOff={post.signOff} 
-                  tweetEmbed={post.tweetEmbed} 
+                  tweetEmbed={post.tweetEmbed}
                 />
                 <ClickToShare 
                   title={post.title}

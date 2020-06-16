@@ -1,6 +1,18 @@
 import markdownStyles from './markdown-styles.module.css'
+import { TwitterTweetEmbed } from 'react-twitter-embed'
 import BlockContent from '@sanity/block-content-to-react'
-import { TwitterTweetEmbed } from 'react-twitter-embed';
+import getYouTubeId from 'get-youtube-id'
+import YouTube from 'react-youtube'
+
+const serializers = {
+  types: {
+    youtube: ({node}) => {
+      const { url } = node
+      const id = getYouTubeId(url)
+      return (<YouTube videoId={id} />)
+    }
+  }
+}
 
 export default function PostBody({ content, thanks, signOff, tweetEmbed }) {
   
@@ -8,11 +20,18 @@ export default function PostBody({ content, thanks, signOff, tweetEmbed }) {
   
   return (
     <div className="max-w-2xl mx-auto">
-      <BlockContent blocks={content} className={markdownStyles.markdown} />
+      <BlockContent 
+        blocks={content}
+        serializers={serializers}
+        className={markdownStyles.markdown} 
+      />
       <p className="text-lg mb-8">{signOff}</p>
       <h2 className="text-2xl font-bold mb-4">Support</h2>
       <span className="text-lg">
-        <BlockContent blocks={thanks} className={markdownStyles.markdown} />
+        <BlockContent 
+          blocks={thanks} 
+          className={markdownStyles.markdown} 
+        />
       </span>
       <div className="flex justify-center mt-4 mx-10 md:mx-0">
         <TwitterTweetEmbed tweetId={tweetId} />
