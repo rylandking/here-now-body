@@ -5,7 +5,8 @@ import AppReducer from './AppReducer'
 // Tutorial https://www.youtube.com/watch?v=XuFDcZABiDQ 
 const initalState = {
   categoryView: 'all',
-  filterView: false
+  filterView: false,
+  subscribeModalView: false
 }
 
 // Create context
@@ -30,11 +31,20 @@ export const GlobalProvider = ({children}) => {
     })
   }
 
+  function toggleSubscribeModal(subscribeModalView) {
+    dispatch({
+      type: 'TOGGLE_SUBSCRIBE_MODAL',
+      payload: !subscribeModalView
+    })
+  }
+
   return (<GlobalContext.Provider value={{
     categoryView:state.categoryView,
     setCategory,
     filterView:state.filterView,
-    showFilters
+    showFilters,
+    subscribeModalView:state.subscribeModalView,
+    toggleSubscribeModal
   }}>
     {children}
   </GlobalContext.Provider>)

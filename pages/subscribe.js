@@ -1,12 +1,12 @@
-import Header from '../components/header'
+import React from 'react';
 import Layout from '../components/layout'
-import Subscribe from '../components/subscribe'
+import SubscribePanel from '../components/subscribe-panel'
 import { getAllPostsForHome } from '../lib/api'
 import Head from 'next/head'
 
 import { GlobalProvider } from '../context/GlobalState'
 
-export default function Index() {
+export default function Subscribe() {
     
   return (
     <GlobalProvider>
@@ -31,8 +31,7 @@ export default function Index() {
           <meta name="twitter:site" content="@herenowbody"/>
           <meta name="twitter:creator" content="@herenowbody"/>
         </Head>
-
-        <Subscribe />
+        <SubscribePanel />
       </Layout>
     </GlobalProvider>
   )

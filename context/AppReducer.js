@@ -10,6 +10,11 @@ export default (state, action) => {
         ...state,
         filterView: state.filterView ? false : true
       }
+    case 'TOGGLE_SUBSCRIBE_MODAL':
+      return {
+        ...state,
+        subscribeModalView: state.subscribeModalView ? false : true
+      }
     default: 
       return state;
   }
