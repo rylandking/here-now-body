@@ -4,12 +4,14 @@ import CategoriesControl from '../components/categories-control'
 import Header from '../components/header'
 import Layout from '../components/layout'
 import TaraTab from '../components/tara-tab'
-import { getAllPostsForHome } from '../lib/api'
+import ExitIntentDiv from '../components/exit-intent-div'
+import SubscribePanel from '../components/subscribe-panel'
+import { getAllPostsForHome, getSubscribeModal, getSubscriberBenefits } from '../lib/api'
 import Head from 'next/head'
 
 import { GlobalProvider } from '../context/GlobalState'
 
-export default function Index({ allPosts }) {
+export default function Index({ allPosts, subscribeModalData, subscriberBenefitsData }) {
     
   let metaDataName = allPosts[0].metaData.name;
   let metaDataDescription = allPosts[0].metaData.description;
@@ -48,14 +50,27 @@ export default function Index({ allPosts }) {
           <CategoriesControl />
         </div>
         <TaraTab posts={allPosts} />
+        <ExitIntentDiv />
+        <SubscribePanel
+          title={subscribeModalData[0].title} 
+          cta={subscribeModalData[0].buttonCTA} 
+          benefits={subscriberBenefitsData}
+        />
       </Layout>
     </GlobalProvider>
   )
 }
 
-export async function getStaticProps({ preview = false }) {
+export async function getStaticProps({ preview = false, subscribeModalData, subscriberBenefitsData }) {
   const allPosts = await getAllPostsForHome(preview)
+  const subscribeModal = await getSubscribeModal(subscribeModalData)
+  const subscriberBenefits = await getSubscriberBenefits(subscriberBenefitsData)
   return {
-    props: { allPosts, preview },
+    props: { 
+      allPosts, 
+      preview,
+      subscribeModalData: subscribeModal || null,
+      subscriberBenefitsData: subscriberBenefits || null,
+     },
   }
 }

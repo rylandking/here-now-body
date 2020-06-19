@@ -13,7 +13,7 @@ import PostTitle from '../../components/post-title'
 import Head from 'next/head'
 import { SITE_NAME } from '../../lib/constants'
 
-export default function Post({ post, preview, testimonialData, serializers }) {
+export default function Post({ post, preview, testimonialData }) {
   const router = useRouter()
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />

@@ -1,13 +1,13 @@
 import React from 'react';
 import Layout from '../components/layout'
 import SubscribePanel from '../components/subscribe-panel'
-import { getAllPostsForHome } from '../lib/api'
+import { getSubscribeModal, getSubscriberBenefits } from '../lib/api'
 import Head from 'next/head'
 
 import { GlobalProvider } from '../context/GlobalState'
 
-export default function Subscribe() {
-    
+export default function Subscribe({subscribeModalData, subscriberBenefitsData}) {
+  
   return (
     <GlobalProvider>
       <Layout>
@@ -31,15 +31,23 @@ export default function Subscribe() {
           <meta name="twitter:site" content="@herenowbody"/>
           <meta name="twitter:creator" content="@herenowbody"/>
         </Head>
-        <SubscribePanel />
+        <SubscribePanel 
+          title={subscribeModalData[0].title} 
+          cta={subscribeModalData[0].buttonCTA} 
+          benefits={subscriberBenefitsData} 
+        />
       </Layout>
     </GlobalProvider>
   )
 }
 
-export async function getStaticProps({ preview = false }) {
-  const allPosts = await getAllPostsForHome(preview)
+export async function getStaticProps({ subscribeModalData, subscriberBenefitsData }) {
+  const subscribeModal = await getSubscribeModal(subscribeModalData)
+  const subscriberBenefits = await getSubscriberBenefits(subscriberBenefitsData)
   return {
-    props: { allPosts, preview },
+    props: {
+      subscribeModalData: subscribeModal || null,
+      subscriberBenefitsData: subscriberBenefits || null,
+    },
   }
 }
