@@ -1,6 +1,7 @@
 import React from 'react';
 import Layout from '../components/layout'
 import SubscribePanel from '../components/subscribe-panel'
+import ExitIntentDiv from '../components/exit-intent-div'
 import { getAllPostsForHome } from '../lib/api'
 import Head from 'next/head'
 
@@ -32,6 +33,7 @@ export default function Subscribe() {
           <meta name="twitter:creator" content="@herenowbody"/>
         </Head>
         <SubscribePanel />
+        <ExitIntentDiv />
       </Layout>
     </GlobalProvider>
   )

@@ -10,32 +10,32 @@ export default function SubscribePanel() {
   
   return (
     <div>
-      <button onClick={() => toggleSubscribeModal(subscribeModalView)}>Toggle Modal</button>
+      <button onClick={() => toggleSubscribeModal(subscribeModalView)} className="z-10">Toggle Modal</button>
       <div className={`fixed inset-x-0 inset-0 h-full bg-gray-50 flex flex-col justify-center ${subscribeModalView ? '': 'hidden'}`}>
         {/* Grey background */}
         <div 
           className="fixed inset-0 transition-opacity"
           onClick={() => toggleSubscribeModal(subscribeModalView)}
         >
-          <div className="absolute inset-0 bg-gray-500 opacity-75"></div>
+          <div className="absolute inset-0 bg-gray-800 opacity-75"></div>
         </div>
         {/* Modal itself */}
         <div className="bg-white h-full md:h-auto md:mx-auto md:w-full md:max-w-2xl z-10">
           <div className="relative bg-white py-8 px-4 md:shadow-md md:px-10">
             {/* Exit button */}
             <div 
-              class="sm:block absolute top-0 right-0 pt-4 pr-4"
+              className="sm:block absolute top-0 right-0 pt-4 pr-4"
               onClick={() => toggleSubscribeModal(subscribeModalView)}
             >
-              <button type="button" class="text-gray-500 hover:text-gray-600 focus:outline-none focus:text-gray-600 transition ease-in-out duration-150" aria-label="Close">
-                <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+              <button type="button" className="text-gray-600 hover:text-gray-700 focus:outline-none focus:text-gray-700 transition ease-in-out duration-150" aria-label="Close">
+                <svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"/>
                 </svg>
               </button>
             </div>
             <div className="mt-6 sm:mx-auto sm:w-full sm:max-w-md"> 
-              <h2 className="mb-10 text-center text-3xl leading-9 font-extrabold text-gray-900">
-                Join others finding love for their here now body.
+              <h2 className="mb-10 text-center text-3xl leading-9 font-extrabold tracking-wide text-gray-900">
+                Join a community finding love for their here now body.
               </h2>
               <SubscribeReasons reason={'Latest Science'} />
               <SubscribeReasons reason={'Real Stories'} />
@@ -44,14 +44,15 @@ export default function SubscribePanel() {
             </div>
 
             <form action="#" method="POST">
-              <div className="mt-10 mx-28">
-                <div className="flex-shrink-0 flex mb-4 ">
+              <div className="mt-10 mx-8 md:mx-28">
+                {/* Input */}
+                <div className="flex-shrink-0 flex mb-4">
                   <div className="bg-gray-200 text-gray-400 rounded-r-none h-16 flex items-center pl-3 pr-0 mr-0">
                     <span className="">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
+                        width="22"
+                        height="22"
                         viewBox="0 0 24 24"
                         className="fill-current text-gray-500"
                       >
@@ -67,6 +68,7 @@ export default function SubscribePanel() {
                     />
                   </div>
                 </div>
+                {/* Button */}
                 <span className="block w-full h-16 shadow-sm">
                   <button type="submit" className="w-full h-full items-center flex justify-center py-2 px-4 border border-transparent text-base font-medium text-white bg-purple-600 hover:bg-purple-500 focus:outline-none focus:border-purple-500 focus:shadow-outline-purple active:bg-purple-500 transition duration-150 ease-in-out">
                     <span className="align-middle inline-block">Start Feeling Better</span>

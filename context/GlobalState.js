@@ -6,7 +6,8 @@ import AppReducer from './AppReducer'
 const initalState = {
   categoryView: 'all',
   filterView: false,
-  subscribeModalView: false
+  subscribeModalView: false,
+  exitIntentModalViewed: false
 }
 
 // Create context
@@ -38,13 +39,22 @@ export const GlobalProvider = ({children}) => {
     })
   }
 
+  function setExitIntentModal(exitIntentModalViewed) {
+    dispatch({
+      type: 'SET_EXIT_INTENT_MODAL',
+      payload: true
+    })
+  }
+
   return (<GlobalContext.Provider value={{
     categoryView:state.categoryView,
     setCategory,
     filterView:state.filterView,
     showFilters,
     subscribeModalView:state.subscribeModalView,
-    toggleSubscribeModal
+    toggleSubscribeModal,
+    exitIntentModalViewed:state.exitIntentModalViewed,
+    setExitIntentModal
   }}>
     {children}
   </GlobalContext.Provider>)

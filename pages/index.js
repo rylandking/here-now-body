@@ -48,7 +48,6 @@ export default function Index({ allPosts }) {
           <CategoriesControl />
         </div>
         <TaraTab posts={allPosts} />
-        
       </Layout>
     </GlobalProvider>
   )

@@ -1,6 +1,11 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useContext } from 'react';
+
+import { GlobalContext } from '../context/GlobalState';
 
 const HeaderBar = () => {
+  // Use context to access global state
+  const {subscribeModalView, toggleSubscribeModal} = useContext(GlobalContext);
+
   return (
     <Fragment>
       <div className="flex w-full border-b items-center justify-between">
@@ -31,8 +36,10 @@ const HeaderBar = () => {
         </div>
 
         <div className="w-full md:w-1/4 flex justify-end flex-shrink-0 text-sm font-semibold pr-3 flex items-center">
-          <div className="text-sm font-semibold text-purple-700 mr-4 md:hidden">
-            <a href="/">GET NEW CONTENT</a>
+          <div 
+            onClick={() => toggleSubscribeModal(subscribeModalView)} 
+            className="text-sm font-semibold text-purple-700 cursor-pointer mr-4 md:hidden">
+            <a>GET NEW CONTENT</a>
           </div>
           <a href="/" className="mr-4">
             <svg

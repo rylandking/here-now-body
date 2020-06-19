@@ -15,6 +15,11 @@ export default (state, action) => {
         ...state,
         subscribeModalView: state.subscribeModalView ? false : true
       }
+    case 'SET_EXIT_INTENT_MODAL':
+      return {
+        ...state,
+        exitIntentModalViewed: true
+      }
     default: 
       return state;
   }
