@@ -17,7 +17,7 @@ const Card = ({
   const {categoryView} = useContext(GlobalContext);
   
   return (
-    <Link as={`/posts/${slug}`} href="/posts/[slug]">
+    <Link href={`/posts/[slug]`} as={`/posts/${slug}`}>
       <div className={`h-56 flex rounded-lg bg-cover
         ${(categoryView === categorySlug || categoryView === 'all') ? "":"hidden"}`}
         style={{ backgroundImage: 'url(' + thumbnailImage + ')' }}

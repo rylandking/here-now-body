@@ -1,5 +1,6 @@
 import React, {useContext} from 'react'
-import SubscribeReasons from './subscribe-reasons';
+import { useRouter } from 'next/router'
+import SubscribeReasons from './subscribe-reasons'
 
 import { GlobalContext } from '../context/GlobalState';
 
@@ -7,27 +8,43 @@ import { GlobalContext } from '../context/GlobalState';
 export default function SubscribePanel() {
   // Use context to access global state
   const {subscribeModalView, toggleSubscribeModal} = useContext(GlobalContext);
+  const router = useRouter()
+
+  let modalOrPage;
+  let background;
+  let exitButton;
+
+  if (router.pathname == '/subscribe') {
+    modalOrPage = `fixed inset-x-0 inset-0 h-full bg-gray-50 flex flex-col justify-center`
+    background = 'hidden'
+    exitButton = 'hidden'
+  } else {
+    modalOrPage = `fixed inset-x-0 inset-0 h-full bg-gray-50 flex flex-col justify-center ${subscribeModalView ? '' : 'hidden'}`
+    background = ''
+    exitButton = ''
+  }
   
   return (
-    <div>
-      <button onClick={() => toggleSubscribeModal(subscribeModalView)} className="z-10">Toggle Modal</button>
-      <div className={`fixed inset-x-0 inset-0 h-full bg-gray-50 flex flex-col justify-center ${subscribeModalView ? '': 'hidden'}`}>
+      <div className={modalOrPage}>
         {/* Grey background */}
         <div 
-          className="fixed inset-0 transition-opacity"
+          className={`fixed inset-0 transition-opacity ${background}`}
           onClick={() => toggleSubscribeModal(subscribeModalView)}
         >
           <div className="absolute inset-0 bg-gray-800 opacity-75"></div>
         </div>
         {/* Modal itself */}
         <div className="bg-white h-full md:h-auto md:mx-auto md:w-full md:max-w-2xl z-10">
-          <div className="relative bg-white py-8 px-4 md:shadow-md md:px-10">
+          <div className={`relative bg-white py-8 px-4 md:shadow-md md:px-10`}>
             {/* Exit button */}
             <div 
               className="sm:block absolute top-0 right-0 pt-4 pr-4"
               onClick={() => toggleSubscribeModal(subscribeModalView)}
             >
-              <button type="button" className="text-gray-600 hover:text-gray-700 focus:outline-none focus:text-gray-700 transition ease-in-out duration-150" aria-label="Close">
+              <button 
+                type="button" 
+                className={`text-gray-600 hover:text-gray-700 focus:outline-none focus:text-gray-700 transition ease-in-out duration-150 ${exitButton}`}
+                aria-label="Close">
                 <svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"/>
                 </svg>
@@ -90,6 +107,5 @@ export default function SubscribePanel() {
           </div>
         </div>
       </div>
-    </div>
   )
 }
