@@ -1,6 +1,7 @@
 import React from 'react';
 import Layout from '../components/layout'
 import SubscribePanel from '../components/subscribe-panel'
+import SubscribeFormStacked from '../components/subscribe-form-stacked';
 import { getSubscribeModal, getSubscriberBenefits } from '../lib/api'
 import Head from 'next/head'
 
@@ -12,7 +13,7 @@ export default function Subscribe({subscribeModalData, subscriberBenefitsData}) 
     <GlobalProvider>
       <Layout>
         <Head>
-          <title>Here Now Body</title>
+          <title>Subscribe | Here Now Body by Tara Lynn</title>
           <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
           <meta httpEquiv="X-UA-Compatible" content="ie=edge"/>
           <meta property="og:type" content="website"/>

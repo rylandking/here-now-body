@@ -25,7 +25,6 @@ export default function PostBody({ content, thanks, signOff, tweetEmbed }) {
         serializers={serializers}
         className={markdownStyles.markdown} 
       />
-      <p className="text-lg mb-8">{signOff}</p>
       <h2 className="text-2xl font-bold mb-4">Support</h2>
       <span className="text-lg">
         <BlockContent 
@@ -33,6 +32,7 @@ export default function PostBody({ content, thanks, signOff, tweetEmbed }) {
           className={markdownStyles.markdown} 
         />
       </span>
+      <p className="text-lg my-6">{signOff}</p>
       <div className="flex justify-center mt-4 mx-10 md:mx-0">
         <TwitterTweetEmbed tweetId={tweetId} />
       </div>

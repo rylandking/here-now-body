@@ -8,75 +8,96 @@ import Meta from '../../components/meta'
 import ClickToShare from '../../components/click-to-share'
 import Testimonials from '../../components/testimonials'
 import Avatar from '../../components/avatar'
-import { getAllPostsWithSlug, getPostAndMorePosts, getTestimonials } from '../../lib/api'
+import SubscribeFormWrapper from '../../components/subscribe-form-wrapper'
+import ExitIntentDiv from '../../components/exit-intent-div'
+import SubscribePanel from '../../components/subscribe-panel'
+import { getAllPostsWithSlug, getPostAndMorePosts, getTestimonials, getSubscribeModal, getSubscriberBenefits } from '../../lib/api'
 import PostTitle from '../../components/post-title'
 import Head from 'next/head'
 import { SITE_NAME } from '../../lib/constants'
 
-export default function Post({ post, preview, testimonialData }) {
+import { GlobalProvider } from '../../context/GlobalState'
+
+export default function Post({ post, preview, testimonialData, subscribeModalData, subscriberBenefitsData }) {
   const router = useRouter()
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />
   }
   
   return (
-    <Layout preview={preview}>
-        {router.isFallback ? (
-          <PostTitle>Loading…</PostTitle>
-        ) : (
-          <>
-            <article>
-              <Head>
-                <title>
-                  {post.title} | {SITE_NAME}
-                </title>
-              </Head>
-              <Meta 
-                title= {post.title}
-                thumbnailImage={post.thumbnailImage}
-                description={post.description}
-                slug={post.slug}
-              />
-              <PostHeader
-                title={post.title}
-                thumbnailImage={post.thumbnailImage}
-                categoryNew={post.categoryNew.name}
-                bgColor={post.categoryNew.bgColor}
-                contentType={post.contentType.name}
-                contentTypeIcon={post.contentType.icon}
-                author={post.author}
-              />
-              <Container>
-                <PostBody 
-                  content={post.content} 
-                  thanks={post.thanksJoinListCTA} 
-                  signOff={post.signOff} 
-                  tweetEmbed={post.tweetEmbed}
-                />
-                <ClickToShare 
-                  title={post.title}
+    <GlobalProvider>
+      <Layout preview={preview}>
+          {router.isFallback ? (
+            <PostTitle>Loading…</PostTitle>
+          ) : (
+            <>
+              <article>
+                <Head>
+                  <title>
+                    {post.title} | {SITE_NAME}
+                  </title>
+                </Head>
+                <Meta 
+                  title= {post.title}
+                  thumbnailImage={post.thumbnailImage}
+                  description={post.description}
                   slug={post.slug}
                 />
-                <Testimonials 
-                  testimonialData={testimonialData}
+                <PostHeader
+                  title={post.title}
+                  thumbnailImage={post.thumbnailImage}
+                  categoryNew={post.categoryNew.name}
+                  bgColor={post.categoryNew.bgColor}
+                  contentType={post.contentType.name}
+                  contentTypeIcon={post.contentType.icon}
+                  author={post.author}
                 />
-              </Container>
-              </article>
-              <Avatar name={post.author.name} picture={post.author.picture} />
-          </>
-        )}
-    </Layout>
+                <Container>
+                  <PostBody 
+                    content={post.content} 
+                    thanks={post.thanksJoinListCTA} 
+                    signOff={post.signOff} 
+                    tweetEmbed={post.tweetEmbed}
+                  />
+                  <ClickToShare 
+                    title={post.title}
+                    slug={post.slug}
+                  />
+                  <SubscribeFormWrapper
+                    title={subscribeModalData[0].title}
+                    cta={subscribeModalData[0].buttonCTA}
+                  />
+                  <Testimonials 
+                    testimonialData={testimonialData}
+                  />
+                </Container>
+                </article>
+                <Avatar name={post.author.name} picture={post.author.picture} />
+                <ExitIntentDiv />
+                <SubscribePanel
+                  title={subscribeModalData[0].title} 
+                  cta={subscribeModalData[0].buttonCTA} 
+                  benefits={subscriberBenefitsData}
+                />
+            </>
+          )}
+      </Layout>
+    </GlobalProvider>
   )
 }
 
-export async function getStaticProps({ params, preview = false, testimonialData }) {
+export async function getStaticProps({ params, preview = false, testimonialData, subscribeModalData, subscriberBenefitsData }) {
   const data = await getPostAndMorePosts(params.slug, preview)
   const testimonials = await getTestimonials(testimonialData)
+  const subscribeModal = await getSubscribeModal(subscribeModalData)
+  const subscriberBenefits = await getSubscriberBenefits(subscriberBenefitsData)
   return {
     props: {
       preview,
       post: data?.post || null,
       testimonialData: testimonials || null,
+      subscribeModalData: subscribeModal || null,
+      subscriberBenefitsData: subscriberBenefits || null,
     },
   }
 }

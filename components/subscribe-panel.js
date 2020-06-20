@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import SubscribeReasons from './subscribe-reasons'
 
 import { GlobalContext } from '../context/GlobalState';
+import SubscribeFormStacked from './subscribe-form-stacked';
 
 
 export default function SubscribePanel({title, cta, benefits}) {
@@ -58,40 +59,10 @@ export default function SubscribePanel({title, cta, benefits}) {
               <SubscribeReasons key={benefit.title} reason={benefit.title} />
             ))}
           </div>
-
-          <form action="#" method="POST">
-            <div className="mt-10 mx-8 md:mx-28">
-              {/* Input */}
-              <div className="flex-shrink-0 flex mb-4">
-                <div className="bg-gray-200 text-gray-400 rounded-r-none h-16 flex items-center pl-3 pr-0 mr-0">
-                  <span className="">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="22"
-                      height="22"
-                      viewBox="0 0 24 24"
-                      className="fill-current text-gray-500"
-                    >
-                      <path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z" />
-                    </svg>
-                  </span>
-                </div>
-                <div className="w-full">
-                  <input
-                    className="bg-gray-200 placeholder-gray-600 text-base font-light focus:outline-none h-16 pr-0 pl-3 block w-full appearance-none leading-normal"
-                    type="email"
-                    placeholder="herenow@body.com"
-                  />
-                </div>
-              </div>
-              {/* Button */}
-              <span className="block w-full h-16 shadow-sm">
-                <button type="submit" className="w-full h-full items-center flex justify-center py-2 px-4 border border-transparent text-base font-medium text-white bg-purple-600 hover:bg-purple-500 focus:outline-none focus:border-purple-500 focus:shadow-outline-purple active:bg-purple-500 transition duration-150 ease-in-out">
-                  <span className="align-middle inline-block">{cta}</span>
-                </button>
-              </span>
-            </div>
-          </form>
+          <SubscribeFormStacked
+            cta={cta}
+            margin={'mx-6 sm:mx-20 mt-10'}
+          />
           {/* Footer */}
           <div className="mt-6">
             <div className="relative">
