@@ -33,7 +33,7 @@ export default function PostBody({ content, thanks, signOff, tweetEmbed }) {
         />
       </span>
       <p className="text-lg my-6">{signOff}</p>
-      <div className="flex justify-center mt-4 mx-10 md:mx-0">
+      <div className="flex justify-center mt-4 md:mx-10 md:mx-0">
         <TwitterTweetEmbed tweetId={tweetId} />
       </div>
       <style jsx global>{`
@@ -42,6 +42,15 @@ export default function PostBody({ content, thanks, signOff, tweetEmbed }) {
           }
           h1, h2, h3, h4, h5, h6 {
             color: #6b46c1;
+          }
+          @media (max-width: 768px) {
+            .twitter-tweet-rendered {
+              width: 90vw !important;
+            }
+            iframe {
+              width: 300px !important;
+              height: 168px !important;
+            }
           }
       `}</style>
     </div>

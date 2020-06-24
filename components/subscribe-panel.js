@@ -14,17 +14,25 @@ export default function SubscribePanel({title, cta, benefits}) {
   let modalOrPage;
   let background;
   let exitButton;
+  let formID;
 
   if (router.pathname == '/subscribe') {
     modalOrPage = `fixed inset-x-0 inset-0 h-full bg-gray-50 flex flex-col justify-center`
     background = 'hidden'
     exitButton = 'hidden'
-  } else {
+    formID = '3720d073-b40f-11ea-a3d0-06b4694bee2a'
+  } else if (router.pathname == '/') {
     modalOrPage = `fixed inset-x-0 inset-0 h-full bg-gray-50 flex flex-col justify-center ${subscribeModalView ? '' : 'hidden'}`
     background = ''
     exitButton = ''
+    formID = '91c4edaf-afd5-11ea-a3d0-06b4694bee2a'
+  } else  {
+    modalOrPage = `fixed inset-x-0 inset-0 h-full bg-gray-50 flex flex-col justify-center ${subscribeModalView ? '' : 'hidden'}`
+    background = ''
+    exitButton = ''
+    formID = 'a4b19c9e-b489-11ea-a3d0-06b4694bee2a'
   }
-  
+
   return (
     <div className={modalOrPage}>
       {/* Grey background */}
@@ -62,6 +70,7 @@ export default function SubscribePanel({title, cta, benefits}) {
           <SubscribeFormStacked
             cta={cta}
             margin={'mx-6 sm:mx-20 mt-10'}
+            formID = {formID}
           />
           {/* Footer */}
           <div className="mt-6">

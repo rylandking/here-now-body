@@ -8,7 +8,7 @@ export default function ExitIntentDiv() {
 
   return (
     <div 
-      className="w-full absolute top-0 p-1 z-0"
+      className="w-full fixed top-0 p-1 z-0"
       onMouseOut={() => {
         if (exitIntentModalViewed == false) {
           toggleSubscribeModal(subscribeModalView)}

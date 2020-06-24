@@ -21,8 +21,8 @@ const Categories = ({posts}) => {
   });
 
   return (
-    <div className={`${filterView ? "w-full": "hidden"} md:block`}>
-      <div className={`md:w-56 grid grid-flow-row grid-cols-2 border-r`}>
+    <div className={`${filterView ? "w-full": "hidden"} md:block md:w-56 border-r`}>
+      <div className={`md:w-56 grid grid-flow-row grid-cols-2`}>
 
         {categoryAssets.map((categoryAsset) => (
           <div 

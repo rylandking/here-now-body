@@ -1,12 +1,16 @@
 import React from 'react';
 import HeaderLeft from './header-left';
 import HeaderBar from './header-bar';
+// import useScript from '../hooks/useScript';
 
-const Header = () => (
-  <nav className="flex h-16">
-    <HeaderLeft />
-    <HeaderBar />
-  </nav>
-);
+export default function Header() {
+  // useScript('https://emailoctopus.com/bundles/emailoctopuslist/js/1.5/formEmbed.js');
+  // useScript('https://emailoctopus.com/bundles/emailoctopuslist/js/1.5/recaptcha.js');
 
-export default Header;
+  return (
+    <nav className="flex h-16">
+      <HeaderLeft />
+      <HeaderBar />
+    </nav>
+  );
+}

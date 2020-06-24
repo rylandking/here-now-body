@@ -9,16 +9,23 @@ import ClickToShare from '../../components/click-to-share'
 import Testimonials from '../../components/testimonials'
 import Avatar from '../../components/avatar'
 import SubscribeFormWrapper from '../../components/subscribe-form-wrapper'
+import SubscribeFormStacked from '../../components/subscribe-form-stacked'
 import ExitIntentDiv from '../../components/exit-intent-div'
 import SubscribePanel from '../../components/subscribe-panel'
 import { getAllPostsWithSlug, getPostAndMorePosts, getTestimonials, getSubscribeModal, getSubscriberBenefits } from '../../lib/api'
 import PostTitle from '../../components/post-title'
 import Head from 'next/head'
+import useScript from '../../hooks/useScript';
 import { SITE_NAME } from '../../lib/constants'
 
 import { GlobalProvider } from '../../context/GlobalState'
+import SubscribeFormHorizontal from '../../components/subscribe-form-horizonal'
 
 export default function Post({ post, preview, testimonialData, subscribeModalData, subscriberBenefitsData }) {
+
+  useScript('https://emailoctopus.com/bundles/emailoctopuslist/js/1.5/formEmbed.js');
+  useScript('https://emailoctopus.com/bundles/emailoctopuslist/js/1.5/recaptcha.js');
+
   const router = useRouter()
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />
@@ -71,16 +78,17 @@ export default function Post({ post, preview, testimonialData, subscribeModalDat
                     testimonialData={testimonialData}
                   />
                 </Container>
-                </article>
-                <Avatar name={post.author.name} picture={post.author.picture} />
-                <ExitIntentDiv />
-                <SubscribePanel
-                  title={subscribeModalData[0].title} 
-                  cta={subscribeModalData[0].buttonCTA} 
-                  benefits={subscriberBenefitsData}
-                />
+              </article>
+              <Avatar name={post.author.name} picture={post.author.picture} />
+              <ExitIntentDiv />
+              <SubscribePanel
+                title={subscribeModalData[0].title} 
+                cta={subscribeModalData[0].buttonCTA} 
+                benefits={subscriberBenefitsData}
+              />
             </>
           )}
+          {/* <SubscribeFormHorizontal /> */}
       </Layout>
     </GlobalProvider>
   )

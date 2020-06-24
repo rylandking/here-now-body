@@ -1,7 +1,7 @@
 import React from 'react';
 import useScript from '../hooks/useScript';
 
-export default function SubscribeFormStacked({cta, margin}) {
+export default function SubscribeFormStacked({cta, margin, formID}) {
 
   useScript('https://emailoctopus.com/bundles/emailoctopuslist/js/1.5/formEmbed.js');
   useScript('https://emailoctopus.com/bundles/emailoctopuslist/js/1.5/recaptcha.js');
@@ -10,7 +10,7 @@ export default function SubscribeFormStacked({cta, margin}) {
     <div className={`email-octopus-form-wrapper block ${margin}`}>
       <form 
         method="post"
-        action="https://emailoctopus.com/lists/91c4edaf-afd5-11ea-a3d0-06b4694bee2a/members/embedded/1.3s/add"
+        action={`https://emailoctopus.com/lists/${formID}/members/embedded/1.3s/add`}
         className="email-octopus-form"
         data-sitekey="6LdYsmsUAAAAAPXVTt-ovRsPIJ_IVhvYBBhGvRV6"
       >   
@@ -33,8 +33,8 @@ export default function SubscribeFormStacked({cta, margin}) {
               </div>
               <div className="email-octopus-form-row w-full">
                 <input 
-                  id="field_0" 
-                  name="field_0" 
+                  id={`${formID}`} 
+                  name={`${formID}`} 
                   type="email" 
                   className="bg-gray-200 placeholder-gray-600 text-base font-light focus:outline-none h-16 pr-0 pl-3 block w-full appearance-none leading-normal"
                   placeholder="herenow@body.com"
@@ -46,13 +46,13 @@ export default function SubscribeFormStacked({cta, margin}) {
             <div className="email-octopus-form-row-hp" aria-hidden="true">
               <input 
                 type="text" 
-                name="hp91c4edaf-afd5-11ea-a3d0-06b4694bee2a"
+                name={`hp${formID}`}
                 tabIndex="-1"
                 autoComplete="nope">
               </input>
             </div>
             {/* Button */}
-            <span className="mail-octopus-form-row-subscribe block w-full h-16 shadow-sm">
+            <span className="email-octopus-form-row-subscribe block w-full h-16 shadow-sm">
               <input 
                 type="hidden"
                 name="successRedirectUrl"
@@ -67,8 +67,8 @@ export default function SubscribeFormStacked({cta, margin}) {
           </div>             
         </div>
       </form>
-      <p className="email-octopus-success-message text-center text-purple-700 mt-8"></p>
-      <p className="email-octopus-error-message text-center text-purple-700"></p>
+      <p className="email-octopus-success-message text-center font-semibold text-purple-700 mt-8"></p>
+      <p className="email-octopus-error-message text-center  font-semibold text-purple-700"></p>
     </div>
   )
 }
