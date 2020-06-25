@@ -7,7 +7,7 @@ export default function SubscribeFormHorizontal() {
   const {setExitIntentModal} = useContext(GlobalContext);
 
   return (
-    <div className="email-octopus-form-wrapper flex-shrink-0 hidden md:flex">
+    <div className="email-octopus-form-wrapper flex-shrink-0 hidden lg:flex">
       <form method="post"
         action="https://emailoctopus.com/lists/31c04bae-b48a-11ea-a3d0-06b4694bee2a/members/embedded/1.3s/add"
         className="email-octopus-form flex items-center"

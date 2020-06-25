@@ -22,6 +22,11 @@ const Categories = ({posts}) => {
 
   return (
     <div className={`${filterView ? "w-full": "hidden"} md:block md:w-56 border-r`}>
+      <div className={`md:w-56 grid grid-flow-row grid-cols-3 h-10 md:hidden`}>
+        <div className="text-sm font-bold bg-purple-100 self-center text-purple-700 bg-purple-200 rounded-lg cursor-pointer m-1 p-1 text-center">Blog</div>
+        <div className="text-sm font-bold bg-purple-100 self-center text-purple-700 bg-purple-200 rounded-lg cursor-pointer m-1 p-1 text-center">Podcast</div>
+        <div className="text-sm font-bold bg-purple-100 self-center text-purple-700 bg-purple-200 rounded-lg cursor-pointer m-1 p-1 text-center">Studio</div>
+      </div>
       <div className={`md:w-56 grid grid-flow-row grid-cols-2`}>
 
         {categoryAssets.map((categoryAsset) => (

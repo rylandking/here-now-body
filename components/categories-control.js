@@ -12,7 +12,7 @@ const CategoriesControl = () => {
     >
       <div className="flex h-full w-full justify-center">
         <span className="self-center text-sm">
-          {filterView ? 'View Articles' : 'Show Categories'}
+          {filterView ? 'View Content' : 'Show Filters'}
         </span>
       </div>
     </div>
