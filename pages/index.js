@@ -6,7 +6,6 @@ import useScript from '../hooks/useScript';
 
 import { GlobalProvider } from '../context/GlobalState'
 
-
 export default function Index({ allPosts, subscribeModalData, subscriberBenefitsData, indexMetaDataData }) {
 
   useScript('https://emailoctopus.com/bundles/emailoctopuslist/js/1.5/formEmbed.js');

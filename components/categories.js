@@ -4,7 +4,7 @@ import { GlobalContext } from '../context/GlobalState';
 
 const Categories = ({posts}) => {
   // Use context to access global state
-  const {categoryView, setCategory, filterView} = useContext(GlobalContext);
+  const {categoryView, setCategory, showFilters, filterView} = useContext(GlobalContext);
 
   let uniqueCategorySlugs = [];
   let categoryAssets = [];
@@ -28,7 +28,10 @@ const Categories = ({posts}) => {
 
         {categoryAssets.map((categoryAsset) => (
           <div 
-          onClick={() => setCategory(categoryAsset.categorySlug)}
+          onClick={() => {
+            setCategory(categoryAsset.categorySlug)
+            showFilters(filterView)
+          }}
           className={`flex justify-center h-24 text-xs font-medium cursor-pointer hover:bg-purple-100 
             ${(categoryView === categoryAsset.categorySlug) ? "bg-purple-100":""}
           `}
