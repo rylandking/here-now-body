@@ -37,7 +37,7 @@ export default function SubscribeFormStacked({cta, margin, formID}) {
                   name="field_0"
                   type="email" 
                   className="bg-gray-200 placeholder-gray-600 text-base font-light focus:outline-none h-16 pr-0 pl-3 block w-full appearance-none leading-normal"
-                  placeholder="herenow@body.com"
+                  placeholder="Get tips and stories each week"
                   >
                 </input>
               </div>

@@ -32,7 +32,7 @@ export default function SubscribeFormHorizontal() {
               name="field_0"
               type="email" 
               className="bg-gray-200 placeholder-gray-600 text-sm font-light focus:outline-none rounded-l-none rounded-r-lg h-12 pr-0 pl-3 block w-full appearance-none leading-normal"
-              placeholder="Get new content each week">  
+              placeholder="Get tips and stories each week">
           </input>
         </div>  
         <div className="email-octopus-form-row-hp w-1" aria-hidden="true">
@@ -52,7 +52,7 @@ export default function SubscribeFormHorizontal() {
               type="submit"
               className="bg-purple-500 hover:bg-purple-400 w-30 text-white text-xs font-medium ml-2 h-12 px-4 rounded leading-5"
               onClick={() => setExitIntentModal()} >
-              Stay updated
+              Start healing
             </button>
         </div>
       </form>
