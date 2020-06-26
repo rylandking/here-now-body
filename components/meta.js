@@ -1,8 +1,10 @@
 import Head from 'next/head'
 
-export default function Meta({title, description, thumbnailImage}) {
+export default function Meta({title, description, thumbnailImage, pageType}) {
+  
   return (
     <Head>
+      <title>{title}</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
       <meta httpEquiv="X-UA-Compatible" content="ie=edge"/>
       <link
@@ -29,7 +31,7 @@ export default function Meta({title, description, thumbnailImage}) {
         color="#000000"
       />
       <link rel="shortcut icon" href="/favicon/favicon.ico" />
-      <meta property="og:type" content="article" />
+      <meta property="og:type" content={pageType} />
       <meta property="og:title" content={title} />
       <meta name="twitter:title" content={title}/>
       <meta property="description" content={description}/>

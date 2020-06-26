@@ -1,4 +1,5 @@
 import React, {useContext} from 'react';
+import { useRouter } from 'next/router'
 import Card from './card';
 
 import { GlobalContext } from '../context/GlobalState';
@@ -6,13 +7,32 @@ import { GlobalContext } from '../context/GlobalState';
 const Cards = ({ posts }) => {
   // Use context to access global state
   const {filterView} = useContext(GlobalContext);
+  const router = useRouter()
+
+  let postsToDisplay =[]
+
+  if (router.pathname == `/podcasts`) {
+    postsToDisplay = posts.filter(function (post) {
+      return post.contentType.name == "Podcast"
+    })
+  } else if (router.pathname == '/blog') {
+    postsToDisplay = posts.filter(function (post) {
+      return post.contentType.name == "Article"
+    })
+  } else if (router.pathname == '/studio') {
+    postsToDisplay = posts.filter(function (post) {
+      return post.contentType.name == "Studio"
+    })
+  } else {
+    postsToDisplay = posts
+  }
   
   return (
     <div className={`
       p-5 grid grid-flow-row grid-row-height xs:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 w-full h-full overflow-y-scroll
       ${filterView ? "hidden": ""}
     `}>
-      {posts.map((post) => (
+      {postsToDisplay.map((post) => (
         <Card 
           key={post.slug}
           title={post.title}

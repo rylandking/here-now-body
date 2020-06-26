@@ -33,8 +33,8 @@ export default function SubscribeFormStacked({cta, margin, formID}) {
               </div>
               <div className="email-octopus-form-row w-full">
                 <input 
-                  id={`${formID}`} 
-                  name={`${formID}`} 
+                  id={`${formID}`}
+                  name="field_0"
                   type="email" 
                   className="bg-gray-200 placeholder-gray-600 text-base font-light focus:outline-none h-16 pr-0 pl-3 block w-full appearance-none leading-normal"
                   placeholder="herenow@body.com"
@@ -68,7 +68,7 @@ export default function SubscribeFormStacked({cta, margin, formID}) {
         </div>
       </form>
       <p className="email-octopus-success-message text-center font-semibold text-purple-700 mt-8"></p>
-      <p className="email-octopus-error-message text-center  font-semibold text-purple-700"></p>
+      <p className="email-octopus-error-message text-center font-semibold text-purple-700 mt-8"></p>
     </div>
   )
 }

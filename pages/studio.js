@@ -1,20 +1,19 @@
 import Layout from '../components/layout'
 import HomeLayout from '../components/home-layout'
 import Meta from '../components/meta'
-import { getAllPostsForHome, getSubscribeModal, getSubscriberBenefits, getIndexPageMetaData } from '../lib/api'
+import { getAllPostsForHome, getSubscribeModal, getSubscriberBenefits, getStudioPageMetaData } from '../lib/api'
 import useScript from '../hooks/useScript';
 
 import { GlobalProvider } from '../context/GlobalState'
 
-
-export default function Index({ allPosts, subscribeModalData, subscriberBenefitsData, indexMetaDataData }) {
+export default function Index({ allPosts, subscribeModalData, subscriberBenefitsData, studioMetaDataData }) {
 
   useScript('https://emailoctopus.com/bundles/emailoctopuslist/js/1.5/formEmbed.js');
   useScript('https://emailoctopus.com/bundles/emailoctopuslist/js/1.5/recaptcha.js');
     
-  let pageTitle = indexMetaDataData[0].name;
-  let pageDescription = indexMetaDataData[0].description;
-  let pageImage = indexMetaDataData[0].image;  
+  let pageTitle = studioMetaDataData[0].name;
+  let pageDescription = studioMetaDataData[0].description;
+  let pageImage = studioMetaDataData[0].image;
   
   return (
     <GlobalProvider>
@@ -24,7 +23,7 @@ export default function Index({ allPosts, subscribeModalData, subscriberBenefits
           description={pageDescription} 
           thumbnailImage={pageImage} 
           pageType={'website'}
-        />
+        />        
         <HomeLayout 
           posts={allPosts}
           title={subscribeModalData[0].title}
@@ -36,10 +35,10 @@ export default function Index({ allPosts, subscribeModalData, subscriberBenefits
   )
 }
 
-export async function getStaticProps({ preview = false, subscribeModalData, subscriberBenefitsData, indexMetaDataData }) {
+export async function getStaticProps({ preview = false, subscribeModalData, subscriberBenefitsData, studioMetaDataData }) {
   const allPosts = await getAllPostsForHome(preview)
   const subscribeModal = await getSubscribeModal(subscribeModalData)
-  const indexMetaData = await getIndexPageMetaData(indexMetaDataData)
+  const studioMetaData = await getStudioPageMetaData(studioMetaDataData)
   const subscriberBenefits = await getSubscriberBenefits(subscriberBenefitsData)
   
   return {
@@ -48,7 +47,7 @@ export async function getStaticProps({ preview = false, subscribeModalData, subs
       preview,
       subscribeModalData: subscribeModal || null,
       subscriberBenefitsData: subscriberBenefits || null,
-      indexMetaDataData: indexMetaData || null,
+      studioMetaDataData: studioMetaData || null,
      },
   }
 }

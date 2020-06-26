@@ -39,16 +39,11 @@ export default function Post({ post, preview, testimonialData, subscribeModalDat
           ) : (
             <>
               <article>
-                <Head>
-                  <title>
-                    {post.title} | {SITE_NAME}
-                  </title>
-                </Head>
                 <Meta 
-                  title= {post.title}
+                  title= {`${post.title} | Here Now Body`}
                   thumbnailImage={post.thumbnailImage}
                   description={post.description}
-                  slug={post.slug}
+                  pageType={"article"}
                 />
                 <PostHeader
                   title={post.title}

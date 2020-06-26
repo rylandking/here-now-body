@@ -1,20 +1,19 @@
 import Layout from '../components/layout'
 import HomeLayout from '../components/home-layout'
 import Meta from '../components/meta'
-import { getAllPostsForHome, getSubscribeModal, getSubscriberBenefits, getIndexPageMetaData } from '../lib/api'
+import { getAllPostsForHome, getSubscribeModal, getSubscriberBenefits, getPodcastPageMetaData } from '../lib/api'
 import useScript from '../hooks/useScript';
 
 import { GlobalProvider } from '../context/GlobalState'
 
-
-export default function Index({ allPosts, subscribeModalData, subscriberBenefitsData, indexMetaDataData }) {
+export default function Index({ allPosts, subscribeModalData, subscriberBenefitsData, podcastMetaDataData }) {
 
   useScript('https://emailoctopus.com/bundles/emailoctopuslist/js/1.5/formEmbed.js');
   useScript('https://emailoctopus.com/bundles/emailoctopuslist/js/1.5/recaptcha.js');
     
-  let pageTitle = indexMetaDataData[0].name;
-  let pageDescription = indexMetaDataData[0].description;
-  let pageImage = indexMetaDataData[0].image;  
+  let pageTitle = podcastMetaDataData[0].name;
+  let pageDescription = podcastMetaDataData[0].description;
+  let pageImage = podcastMetaDataData[0].image;
   
   return (
     <GlobalProvider>
@@ -36,10 +35,10 @@ export default function Index({ allPosts, subscribeModalData, subscriberBenefits
   )
 }
 
-export async function getStaticProps({ preview = false, subscribeModalData, subscriberBenefitsData, indexMetaDataData }) {
+export async function getStaticProps({ preview = false, subscribeModalData, subscriberBenefitsData, podcastMetaDataData }) {
   const allPosts = await getAllPostsForHome(preview)
   const subscribeModal = await getSubscribeModal(subscribeModalData)
-  const indexMetaData = await getIndexPageMetaData(indexMetaDataData)
+  const podcastMetaData = await getPodcastPageMetaData(podcastMetaDataData)
   const subscriberBenefits = await getSubscriberBenefits(subscriberBenefitsData)
   
   return {
@@ -48,7 +47,7 @@ export async function getStaticProps({ preview = false, subscribeModalData, subs
       preview,
       subscribeModalData: subscribeModal || null,
       subscriberBenefitsData: subscriberBenefits || null,
-      indexMetaDataData: indexMetaData || null,
+      podcastMetaDataData: podcastMetaData || null,
      },
   }
 }
