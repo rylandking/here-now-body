@@ -7,7 +7,8 @@ const initalState = {
   categoryView: 'all',
   filterView: false,
   subscribeModalView: false,
-  exitIntentModalViewed: false
+  exitIntentModalViewed: false,
+  menuView: false
 }
 
 // Create context
@@ -46,6 +47,13 @@ export const GlobalProvider = ({children}) => {
     })
   }
 
+  function setMenuView(menuView) {
+    dispatch({
+      type: 'SET_MENU_VIEW',
+      payload: !menuView
+    })
+  }
+
   return (<GlobalContext.Provider value={{
     categoryView:state.categoryView,
     setCategory,
@@ -54,7 +62,9 @@ export const GlobalProvider = ({children}) => {
     subscribeModalView:state.subscribeModalView,
     toggleSubscribeModal,
     exitIntentModalViewed:state.exitIntentModalViewed,
-    setExitIntentModal
+    setExitIntentModal,
+    menuView:state.menuView,
+    setMenuView
   }}>
     {children}
   </GlobalContext.Provider>)

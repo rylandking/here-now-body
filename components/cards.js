@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
 import Card from './card';
 
 import { GlobalContext } from '../context/GlobalState';

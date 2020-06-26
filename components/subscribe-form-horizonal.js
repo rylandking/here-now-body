@@ -7,13 +7,13 @@ export default function SubscribeFormHorizontal() {
   const {setExitIntentModal} = useContext(GlobalContext);
 
   return (
-    <div className="email-octopus-form-wrapper flex-shrink-0 hidden lg:flex">
+    <div className="email-octopus-form-wrapper flex-shrink-0">
       <form method="post"
         action="https://emailoctopus.com/lists/31c04bae-b48a-11ea-a3d0-06b4694bee2a/members/embedded/1.3s/add"
         className="email-octopus-form flex items-center"
         data-sitekey="6LdYsmsUAAAAAPXVTt-ovRsPIJ_IVhvYBBhGvRV6"
       >
-        <div className="bg-gray-200 text-gray-400 rounded-l-lg rounded-r-none h-12 flex items-center pl-3 pr-0 mr-0 ml-5">
+        <div className="bg-gray-200 text-gray-400 rounded-l-lg rounded-r-none h-12 flex items-center pl-3 pr-0 mr-0">
           <span className="">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -50,7 +50,7 @@ export default function SubscribeFormHorizontal() {
             </input>
             <button 
               type="submit"
-              className="bg-purple-600 hover:bg-purple-500 w-30 text-white text-xs font-medium ml-2 h-12 px-4 rounded leading-5"
+              className="bg-purple-500 hover:bg-purple-400 w-30 text-white text-xs font-medium ml-2 h-12 px-4 rounded leading-5"
               onClick={() => setExitIntentModal()} >
               Stay updated
             </button>

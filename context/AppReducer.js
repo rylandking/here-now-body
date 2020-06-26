@@ -20,6 +20,11 @@ export default (state, action) => {
         ...state,
         exitIntentModalViewed: true
       }
+    case 'SET_MENU_VIEW':
+      return {
+        ...state,
+        menuView: state.menuView ? false : true
+      }
     default: 
       return state;
   }
