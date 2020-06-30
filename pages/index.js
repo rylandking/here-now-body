@@ -1,12 +1,12 @@
 import Layout from '../components/layout'
 import HomeLayout from '../components/home-layout'
 import Meta from '../components/meta'
-import { getAllPostsForHome, getSubscribeModal, getSubscriberBenefits, getIndexPageMetaData } from '../lib/api'
+import { getAllPostsForHome, getSubscribeModal, getSubscriberBenefits, getIndexPageMetaData, getMenuItems } from '../lib/api'
 import useScript from '../hooks/useScript';
 
 import { GlobalProvider } from '../context/GlobalState'
 
-export default function Index({ allPosts, subscribeModalData, subscriberBenefitsData, indexMetaDataData }) {
+export default function Index({ allPosts, subscribeModalData, subscriberBenefitsData, indexMetaDataData, menuItemsData }) {
 
   useScript('https://emailoctopus.com/bundles/emailoctopuslist/js/1.5/formEmbed.js');
   useScript('https://emailoctopus.com/bundles/emailoctopuslist/js/1.5/recaptcha.js');
@@ -29,17 +29,19 @@ export default function Index({ allPosts, subscribeModalData, subscriberBenefits
           title={subscribeModalData[0].title}
           cta={subscribeModalData[0].buttonCTA}
           benefits={subscriberBenefitsData}
+          menuItems={menuItemsData}
         />
       </Layout>
     </GlobalProvider>
   )
 }
 
-export async function getStaticProps({ preview = false, subscribeModalData, subscriberBenefitsData, indexMetaDataData }) {
+export async function getStaticProps({ preview = false, subscribeModalData, subscriberBenefitsData, indexMetaDataData, menuItemsData }) {
   const allPosts = await getAllPostsForHome(preview)
   const subscribeModal = await getSubscribeModal(subscribeModalData)
   const indexMetaData = await getIndexPageMetaData(indexMetaDataData)
   const subscriberBenefits = await getSubscriberBenefits(subscriberBenefitsData)
+  const menuItems = await getMenuItems(menuItemsData)
   
   return {
     props: { 
@@ -48,6 +50,7 @@ export async function getStaticProps({ preview = false, subscribeModalData, subs
       subscribeModalData: subscribeModal || null,
       subscriberBenefitsData: subscriberBenefits || null,
       indexMetaDataData: indexMetaData || null,
+      menuItemsData: menuItems || null,
      },
   }
 }

@@ -5,10 +5,16 @@ import SubscribeFormHorizontal from './subscribe-form-horizonal'
 
 import { GlobalContext } from '../context/GlobalState';
 
-export default function flyOutMenu() {
+export default function flyOutMenu({menuItems}) {
 
   const {menuView} = useContext(GlobalContext);
   const router = useRouter()
+
+  let blog = menuItems.find(o => o.title === 'Blog');
+  let studio = menuItems.find(o => o.title === 'Studio');
+  let podcast = menuItems.find(o => o.title === 'Podcasts');
+  let about = menuItems.find(o => o.title === 'About');
+  let home = menuItems.find(o => o.title === 'Home');
   
   let blogIcon = <svg fill="none" className="h-6 w-6" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>;
 
@@ -33,42 +39,42 @@ export default function flyOutMenu() {
           <div className="z-20 relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8 lg:grid-cols-2">
             { router.pathname !== '/blog' ? (
               <FlyOutMenuItem 
-              icon={blogIcon}
-              title={"Blog"}
-              subtitle={"Read the latest science about healing and wellness."}
-              link={"/blog"}
+                icon={blogIcon}
+                title={blog.title}
+                subtitle={blog.subTitle}
+                link={"/blog"}
               />
               ) : ("") 
             }
             { router.pathname !== '/podcasts' ? (
               <FlyOutMenuItem 
-              icon={podcastIcon}
-              title={"Podcast"}
-              subtitle={"Listen to stories of people who've overcome chronic pain."}
-              link={"/podcasts"}
+                icon={podcastIcon}
+                title={podcast.title}
+                subtitle={podcast.subTitle}
+                link={"/podcasts"}
               />
               ) : ("") 
             }
             { router.pathname !== '/studio' ? (
               <FlyOutMenuItem 
                 icon={studioIcon}
-                title={"Studio"}
-                subtitle={"Take action with Tara Lynn inside the virtual studio."}
+                title={studio.title}
+                subtitle={studio.subTitle}
                 link={"/studio"}
               />
               ) : ("") 
             }
             <FlyOutMenuItem 
               icon={aboutIcon}
-              title={"About Tara Lynn"}
-              subtitle={"Learn about who's behind Here Now Body."}
+              title={about.title}
+              subtitle={about.subTitle}
               link={"/about"}
             />
             { router.pathname !== '/' ? (
               <FlyOutMenuItem 
                 icon={homeIcon}
-                title={"Home"}
-                subtitle={"Check out all the latest Here Now Body content."}
+                title={home.title}
+                subtitle={home.subTitle}
                 link={"/"}
               />
               ) : ("") 
@@ -86,8 +92,6 @@ export default function flyOutMenu() {
     </div>
   )
 }
-
-
 
 
 

@@ -7,12 +7,14 @@ import TaraTab from '../components/tara-tab'
 import ExitIntentDiv from '../components/exit-intent-div'
 import SubscribePanel from '../components/subscribe-panel'
 
-export default function HomeLayout({ posts, title, cta, benefits }) {
-  // allPosts, subscribeModalData, subscriberBenefitsData
+export default function HomeLayout({ posts, title, cta, benefits, menuItems }) {
+  
   return (
     <>
     <div className="h-screen block">
-      <Header />
+      <Header
+        menuItems={menuItems}
+      />
       <div className="flex" style={{ height: 'calc(100% - 65px)' }}>
         <Categories posts={posts} />
         <Cards posts={posts} />

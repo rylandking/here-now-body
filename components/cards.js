@@ -39,7 +39,7 @@ const Cards = ({ posts }) => {
           thumbnailImage={post.thumbnailImage}
           date={post.date}
           contentType={post.contentType.name}
-          contentTypeIcon={post.contentType.icon}
+          contentTypeIcon={post.contentType.svgIcon}
           slug={post.slug}
           categoryNew={post.categoryNew.name}
           bgColor={post.categoryNew.bgColor}

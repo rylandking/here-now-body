@@ -5,10 +5,16 @@ import HeaderBanner from './header-banner';
 
 import { GlobalContext } from '../context/GlobalState';
 
-export default function HeaderBar() {
+export default function HeaderBar({menuItems}) {
 
   const {setMenuView, menuView} = useContext(GlobalContext);
   const router = useRouter()
+
+  let blog = menuItems.find(o => o.title === 'Blog');
+  let studio = menuItems.find(o => o.title === 'Studio');
+  let podcast = menuItems.find(o => o.title === 'Podcasts');
+  let about = menuItems.find(o => o.title === 'About');
+  let home = menuItems.find(o => o.title === 'Home');
 
   let blogIcon = <svg fill="none" className="h-8 w-8" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>;
 
@@ -33,8 +39,8 @@ export default function HeaderBar() {
 
   if (router.pathname == `/podcasts`) {
     icon = podcastIcon;
-    title = "Podcast";
-    subtitle = "Listen to stories of people who've overcome chronic pain.";
+    title = podcast.title;
+    subtitle = podcast.subTitle;
     bg = "bg-purple-400"
     bgWrapper = "bg-purple-400"
     menuTextColor = "text-white"
@@ -42,8 +48,8 @@ export default function HeaderBar() {
     cursor = "cursor-pointer"
   } else if (router.pathname == '/blog') {
     icon = blogIcon;
-    title = "Blog";
-    subtitle = "Read the latest science about healing and wellness.";
+    title = blog.title;
+    subtitle = blog.subTitle;
     bg = "bg-purple-400"
     bgWrapper = "bg-purple-400"
     menuTextColor = "text-white"
@@ -51,8 +57,8 @@ export default function HeaderBar() {
     cursor = "cursor-pointer"
   } else if (router.pathname == '/studio') {
     icon = studioIcon;
-    title = "Studio";
-    subtitle = "Take action with Tara Lynn inside the virtual studio.";
+    title = studio.title;
+    subtitle = studio.subTitle;
     bg = "bg-purple-400"
     bgWrapper = "bg-purple-400"
     menuTextColor = "text-white"
@@ -83,9 +89,9 @@ export default function HeaderBar() {
   let xIcon = <svg 
     className={`h-8 w-8 group-hover:text-purple-500 group-focus:text-purple-500 transition ease-in-out duration-150 ${menuTextColor}`}
     fill="none" 
-    stroke-linecap="round" 
-    stroke-linejoin="round" 
-    stroke-width="2" 
+    strokeLinecap="round" 
+    strokeLinejoin="round" 
+    strokeWidth="2" 
     viewBox="0 0 24 24" 
     stroke="currentColor">
       <path d="M6 18L18 6M6 6l12 12"></path>
@@ -114,7 +120,9 @@ export default function HeaderBar() {
             }
           </button>
         </div>
-        <FlyOutMenu />
+        <FlyOutMenu
+          menuItems={menuItems}
+        />
       </div> 
   );
 };
