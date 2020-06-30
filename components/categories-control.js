@@ -3,13 +3,13 @@ import { GlobalContext, GlobalProvider } from '../context/GlobalState';
 
 const CategoriesControl = () => {
    // Use context to access global state
-   const {filterView, showFilters} = useContext(GlobalContext);
+   const {filterView, showFilters, menuView} = useContext(GlobalContext);
 
   return (
-    <div className={`flex justify-center`}>
+    <div className={`flex justify-center ${menuView ? 'hidden' : ''}`}>
       <div
         onClick={ () => showFilters(filterView) }
-        className="flex md:hidden fixed h-10 w-24 ml-5 mb-5 rounded-full bottom-0 bg-purple-500 text-white cursor-pointer"
+        className="flex md:hidden fixed h-10 w-24 mb-5 rounded-full bottom-0 bg-purple-500 text-white cursor-pointer"
       >
         <div className="flex h-full w-full justify-center">
           <span className="self-center text-sm font-medium flex">

@@ -45,10 +45,10 @@ export default function PostBody({ content, thanks, signOff, tweetEmbed }) {
           }
           @media (max-width: 768px) {
             .twitter-tweet-rendered {
-              width: 90vw !important;
+              width: 88vw !important;
             }
             iframe {
-              width: 300px !important;
+              width: 88vw !important;
               height: 168px !important;
             }
           }

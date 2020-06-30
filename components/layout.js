@@ -1,6 +1,7 @@
-import React from 'react'
+import React, {useContext} from 'react'
 
 export default function Layout({ children }) {
+
   return (
     <>
       <div className="min-h-screen">   

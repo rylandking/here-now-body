@@ -59,8 +59,8 @@ export default function SubscribePanel({title, cta, benefits}) {
               </svg>
             </button>
           </div>
-          <div className="mt-6 sm:mx-auto sm:w-full sm:max-w-md"> 
-            <h2 className="mb-10 text-center text-3xl leading-9 font-extrabold tracking-wide text-gray-900">
+          <div className="mt-6 sm:mx-auto sm:w-full sm:max-w-md">
+            <h2 className="mb-10 text-center leading-9 text-3xl font-extrabold tracking-wide text-gray-900">
               {title}
             </h2>
             {benefits.map((benefit) => (

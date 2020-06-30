@@ -30,7 +30,7 @@ const Cards = ({ posts }) => {
   return (
     <div className={`
       p-5 grid grid-flow-row grid-row-height xs:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 w-full h-full overflow-y-scroll
-      ${filterView ? "hidden": ""}
+      ${filterView ? "hidden md:grid": ""}
     `}>
       {postsToDisplay.map((post) => (
         <Card 

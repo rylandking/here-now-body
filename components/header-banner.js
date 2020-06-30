@@ -2,7 +2,7 @@ import React, {useContext} from 'react'
 
 import { GlobalContext } from '../context/GlobalState';
 
-export default function HeaderBanner({icon, title, subtitle, bg}) {
+export default function HeaderBanner({icon, title, subtitle, bg, cursor}) {
   // Use context to access global state
   const { setCategory } = useContext(GlobalContext);
   
@@ -10,7 +10,7 @@ export default function HeaderBanner({icon, title, subtitle, bg}) {
       <div className="w-5/6 lg:w-3/4">
           <a>
             <div 
-              className={`md:pl-3 py-1 sm:py-0 cursor-pointer h-full w-full flex justify-center md:justify-start items-start space-x-1 md:space-x-4 ${bg} transition ease-in-out duration-150`}
+              className={`md:pl-3 py-1 sm:py-0 ${cursor} h-full w-full flex justify-center md:justify-start items-start space-x-1 md:space-x-4 ${bg} transition ease-in-out duration-150`}
               onClick={() => {
                 setCategory("all")
               }}

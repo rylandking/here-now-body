@@ -13,7 +13,7 @@ export default function SubscribeFormHorizontal() {
         className="email-octopus-form flex items-center"
         data-sitekey="6LdYsmsUAAAAAPXVTt-ovRsPIJ_IVhvYBBhGvRV6"
       >
-        <div className="bg-gray-200 text-gray-400 rounded-l-lg rounded-r-none h-12 flex items-center pl-3 pr-0 mr-0">
+        <div className="bg-gray-200 text-gray-400 rounded-l-lg rounded-r-none h-12 flex items-center pl-3 pr-0 mr-0 hidden sm:flex">
           <span className="">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -26,13 +26,13 @@ export default function SubscribeFormHorizontal() {
             </svg>
           </span>
         </div>
-        <div className="email-octopus-form-row w-64">
+        <div className="email-octopus-form-row w-48 sm:w-64">
             <input 
               id="field_0" 
               name="field_0"
               type="email" 
-              className="bg-gray-200 placeholder-gray-600 text-sm font-light focus:outline-none rounded-l-none rounded-r-lg h-12 pr-0 pl-3 block w-full appearance-none leading-normal"
-              placeholder="Get tips and stories each week">
+              className="bg-gray-200 placeholder-gray-600 text-sm font-light focus:outline-none rounded-l-lg sm:rounded-l-none rounded-r-lg h-12 pr-0 pl-3 block w-full appearance-none leading-normal"
+              placeholder="Get tips and stories weekly">
           </input>
         </div>  
         <div className="email-octopus-form-row-hp w-1" aria-hidden="true">
@@ -60,6 +60,11 @@ export default function SubscribeFormHorizontal() {
         <p className="email-octopus-success-message text-center font-semibold text-purple-700 pl-5"></p>
         <p className="email-octopus-error-message text-center font-semibold text-purple-700 pl-5"></p>
       </div>
+      <style jsx global>{`
+        .grecaptcha-badge { 
+          visibility: hidden;
+        }
+      `}</style>
     </div>
   )
 }

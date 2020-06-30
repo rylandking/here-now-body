@@ -14,7 +14,7 @@ export default function SubscribeFormStacked({cta, margin, formID}) {
         className="email-octopus-form"
         data-sitekey="6LdYsmsUAAAAAPXVTt-ovRsPIJ_IVhvYBBhGvRV6"
       >   
-        <div className="mt-4 mx-8 flex">
+        <div className="mt-4 mx-2 md:mx-8 flex">
           <div className="block w-full">
             {/* Input */}
             <div className="flex-shrink-0 flex">

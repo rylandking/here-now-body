@@ -28,6 +28,8 @@ export default function HeaderBar() {
   let bg;
   let bgWrapper;
   let menuTextColor;
+  let borderB;
+  let cursor;
 
   if (router.pathname == `/podcasts`) {
     icon = podcastIcon;
@@ -36,6 +38,8 @@ export default function HeaderBar() {
     bg = "bg-purple-400"
     bgWrapper = "bg-purple-400"
     menuTextColor = "text-white"
+    borderB = ""
+    cursor = "cursor-pointer"
   } else if (router.pathname == '/blog') {
     icon = blogIcon;
     title = "Blog";
@@ -43,6 +47,8 @@ export default function HeaderBar() {
     bg = "bg-purple-400"
     bgWrapper = "bg-purple-400"
     menuTextColor = "text-white"
+    borderB = ""
+    cursor = "cursor-pointer"
   } else if (router.pathname == '/studio') {
     icon = studioIcon;
     title = "Studio";
@@ -50,6 +56,8 @@ export default function HeaderBar() {
     bg = "bg-purple-400"
     bgWrapper = "bg-purple-400"
     menuTextColor = "text-white"
+    borderB = ""
+    cursor = "cursor-pointer"
   } else {
     icon = "";
     title = "";
@@ -57,41 +65,52 @@ export default function HeaderBar() {
     bg = "bg-white";
     bgWrapper = "bg-white"
     menuTextColor = "text-purple-600" 
+    borderB = "border-b"
+    cursor = ""
   }
 
-  let chevronDown = <svg 
-    className={`h-10 w-10 group-hover:text-purple-500 group-focus:text-purple-500 transition ease-in-out duration-150 ${menuTextColor}`}
-    viewBox="0 0 20 20" 
-    fill="currentColor">
-    <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd"/>
-  </svg>;
+  let menuIcon = <svg 
+    className={`h-8 w-8 group-hover:text-purple-500 group-focus:text-purple-500 transition ease-in-out duration-150 ${menuTextColor}`}
+    fill="none" 
+    strokeLinecap="round" 
+    strokeLinejoin="round" 
+    strokeWidth="2" 
+    viewBox="0 0 24 24" 
+    stroke="currentColor">
+      <path d="M4 6h16M4 12h16M4 18h16"></path>
+    </svg>;
 
-  let chevronUp = <svg 
-    className={`h-10 w-10 group-hover:text-purple-500 group-focus:text-purple-500 transition ease-in-out duration-150 ${menuTextColor}`}
-    fill="currentColor" 
-    viewBox="0 0 20 20">
-    <path fillRule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clipRule="evenodd"></path>
-  </svg>;
+  let xIcon = <svg 
+    className={`h-8 w-8 group-hover:text-purple-500 group-focus:text-purple-500 transition ease-in-out duration-150 ${menuTextColor}`}
+    fill="none" 
+    stroke-linecap="round" 
+    stroke-linejoin="round" 
+    stroke-width="2" 
+    viewBox="0 0 24 24" 
+    stroke="currentColor">
+      <path d="M6 18L18 6M6 6l12 12"></path>
+    </svg>
 
   return (    
-      <div className="flex w-full border-b justify-between">
+      <div className={`flex w-full ${borderB} justify-between`}>
          <HeaderBanner
           icon={icon}
           title={title}
           subtitle={subtitle}
           bg={bg}
+          cursor={cursor}
          />  
         <div className={`w-1/6 lg:w-1/4 flex justify-end flex-shrink-0 text-sm font-semibold pr-3 flex items-center ${bg}`}>
           <button 
             type="button" 
-            className={`group inline-flex items-center space-x-1 text-base leading-6 font-bold focus:outline-none transition ease-in-out duration-150 ${menuTextColor}`}
+            className={`group inline-flex items-center space-x-1 mr-2 text-base leading-6 font-bold focus:outline-none transition ease-in-out duration-150 ${menuTextColor}`}
             onClick={() => setMenuView(menuView) }
           >
-            <span className="hidden lg:flex">Menu</span>
+            <span className="hidden lg:flex mr-3">{menuView ? "Close" : "Menu"}</span>
             {menuView ? 
-              chevronUp
+              xIcon
               :
-              chevronDown
+              menuIcon
             }
           </button>
         </div>
