@@ -36,10 +36,10 @@ export default function CardBanner({menuItems, authors}) {
   return (
     <div className={`border-2 border-purple-200 rounded-lg py-1 px-3 ${hideShow}`}>
       <div className="block">
-        <h3 className="mt-3 text-xl leading-7 md:leading-6 font-bold text-purple-900">
+        <h3 className="mt-3 text-lg md:text-xl leading-7 md:leading-6 font-bold text-gray-800">
           {welcome}
         </h3>
-        <p className="mt-3 text-base sm:text-sm leading-6 md:leading-5 text-gray-500">
+        <p className="mt-1 md:mt-3 text-base sm:text-sm leading-5 text-gray-500">
           {cardSubTitle}
         </p>
       </div>
