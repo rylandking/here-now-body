@@ -30,7 +30,6 @@ export default function HeaderBar({menuItems}) {
 
   let icon;
   let title;
-  let subtitle;
   let bg;
   let bgWrapper;
   let menuTextColor;
@@ -40,7 +39,6 @@ export default function HeaderBar({menuItems}) {
   if (router.pathname == `/podcasts`) {
     icon = podcastIcon;
     title = podcast.title;
-    subtitle = podcast.subTitle;
     bg = "bg-purple-400"
     bgWrapper = "bg-purple-400"
     menuTextColor = "text-white"
@@ -49,7 +47,6 @@ export default function HeaderBar({menuItems}) {
   } else if (router.pathname == '/blog') {
     icon = blogIcon;
     title = blog.title;
-    subtitle = blog.subTitle;
     bg = "bg-purple-400"
     bgWrapper = "bg-purple-400"
     menuTextColor = "text-white"
@@ -58,7 +55,6 @@ export default function HeaderBar({menuItems}) {
   } else if (router.pathname == '/studio') {
     icon = studioIcon;
     title = studio.title;
-    subtitle = studio.subTitle;
     bg = "bg-purple-400"
     bgWrapper = "bg-purple-400"
     menuTextColor = "text-white"
@@ -67,7 +63,6 @@ export default function HeaderBar({menuItems}) {
   } else {
     icon = "";
     title = "";
-    subtitle = "";
     bg = "bg-white";
     bgWrapper = "bg-white"
     menuTextColor = "text-purple-600" 
@@ -102,7 +97,6 @@ export default function HeaderBar({menuItems}) {
          <HeaderBanner
           icon={icon}
           title={title}
-          subtitle={subtitle}
           bg={bg}
           cursor={cursor}
          />  

@@ -1,10 +1,11 @@
 import React, {useContext} from 'react';
 import { useRouter } from 'next/router';
 import Card from './card';
+import CardBanner from './card-banner';
 
 import { GlobalContext } from '../context/GlobalState';
 
-const Cards = ({ posts }) => {
+const Cards = ({ posts, menuItems, authors }) => {
   // Use context to access global state
   const {filterView} = useContext(GlobalContext);
   const router = useRouter()
@@ -32,6 +33,10 @@ const Cards = ({ posts }) => {
       p-5 grid grid-flow-row grid-row-height xs:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 w-full h-full overflow-y-scroll
       ${filterView ? "hidden md:grid": ""}
     `}>
+      <CardBanner
+        menuItems={menuItems}
+        authors={authors}
+      />
       {postsToDisplay.map((post) => (
         <Card 
           key={post.slug}

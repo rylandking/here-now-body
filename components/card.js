@@ -8,7 +8,6 @@ const Card = ({
   thumbnailImage,
   slug,
   contentType,
-  contentTypeIcon,
   categoryNew,
   categorySlug,
   bgColor

@@ -27,7 +27,7 @@ export default function ExitIntentDiv() {
   const setExitIntentStateinLocalStorage = () => {
     localStorage.setItem('exitIntentModalViewed', true );
     // Set timer for 2 days out
-    localStorage.setItem('exitIntentModalViewedTimer', + new Date() + 1000*60*60*24*2)
+    localStorage.setItem('exitIntentModalViewedTimer', + new Date() + 1000*60*60*4)
   }
 
   return (

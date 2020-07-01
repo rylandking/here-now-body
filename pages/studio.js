@@ -1,12 +1,12 @@
 import Layout from '../components/layout'
 import HomeLayout from '../components/home-layout'
 import Meta from '../components/meta'
-import { getAllPostsForHome, getSubscribeModal, getSubscriberBenefits, getStudioPageMetaData, getMenuItems } from '../lib/api'
+import { getAllPostsForHome, getSubscribeModal, getSubscriberBenefits, getStudioPageMetaData, getMenuItems, getAuthors } from '../lib/api'
 import useScript from '../hooks/useScript';
 
 import { GlobalProvider } from '../context/GlobalState'
 
-export default function Index({ allPosts, subscribeModalData, subscriberBenefitsData, studioMetaDataData, menuItemsData }) {
+export default function Index({ allPosts, subscribeModalData, subscriberBenefitsData, studioMetaDataData, menuItemsData, authorsData }) {
 
   useScript('https://emailoctopus.com/bundles/emailoctopuslist/js/1.5/formEmbed.js');
   useScript('https://emailoctopus.com/bundles/emailoctopuslist/js/1.5/recaptcha.js');
@@ -30,18 +30,20 @@ export default function Index({ allPosts, subscribeModalData, subscriberBenefits
           cta={subscribeModalData[0].buttonCTA}
           benefits={subscriberBenefitsData}
           menuItems={menuItemsData}
+          authors={authorsData}
         />
       </Layout>
     </GlobalProvider>
   )
 }
 
-export async function getStaticProps({ preview = false, subscribeModalData, subscriberBenefitsData, studioMetaDataData, menuItemsData }) {
+export async function getStaticProps({ preview = false, subscribeModalData, subscriberBenefitsData, studioMetaDataData, menuItemsData, authorsData }) {
   const allPosts = await getAllPostsForHome(preview)
   const subscribeModal = await getSubscribeModal(subscribeModalData)
   const studioMetaData = await getStudioPageMetaData(studioMetaDataData)
   const subscriberBenefits = await getSubscriberBenefits(subscriberBenefitsData)
   const menuItems = await getMenuItems(menuItemsData)
+  const authors = await getAuthors(authorsData)
   
   return {
     props: { 
@@ -51,6 +53,7 @@ export async function getStaticProps({ preview = false, subscribeModalData, subs
       subscriberBenefitsData: subscriberBenefits || null,
       studioMetaDataData: studioMetaData || null,
       menuItemsData: menuItems || null,
+      authorsData: authors || null,
      },
   }
 }

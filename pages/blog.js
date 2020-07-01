@@ -1,12 +1,12 @@
 import Layout from '../components/layout'
 import HomeLayout from '../components/home-layout'
 import Meta from '../components/meta'
-import { getAllPostsForHome, getSubscribeModal, getSubscriberBenefits, getBlogPageMetaData, getMenuItems } from '../lib/api'
+import { getAllPostsForHome, getSubscribeModal, getSubscriberBenefits, getBlogPageMetaData, getMenuItems, getAuthors } from '../lib/api'
 import useScript from '../hooks/useScript';
 
 import { GlobalProvider } from '../context/GlobalState'
 
-export default function Index({ allPosts, subscribeModalData, subscriberBenefitsData, blogMetaDataData, menuItemsData }) {
+export default function Index({ allPosts, subscribeModalData, subscriberBenefitsData, blogMetaDataData, menuItemsData, authorsData }) {
 
   useScript('https://emailoctopus.com/bundles/emailoctopuslist/js/1.5/formEmbed.js');
   useScript('https://emailoctopus.com/bundles/emailoctopuslist/js/1.5/recaptcha.js');
@@ -14,7 +14,7 @@ export default function Index({ allPosts, subscribeModalData, subscriberBenefits
   let pageTitle = blogMetaDataData[0].name;
   let pageDescription = blogMetaDataData[0].description;
   let pageImage = blogMetaDataData[0].image;
-  
+
   return (
     <GlobalProvider>
       <Layout>
@@ -30,18 +30,20 @@ export default function Index({ allPosts, subscribeModalData, subscriberBenefits
           cta={subscribeModalData[0].buttonCTA}
           benefits={subscriberBenefitsData}
           menuItems={menuItemsData}
+          authors={authorsData}
         />
       </Layout>
     </GlobalProvider>
   )
 }
 
-export async function getStaticProps({ preview = false, subscribeModalData, subscriberBenefitsData, blogMetaDataData, menuItemsData }) {
+export async function getStaticProps({ preview = false, subscribeModalData, subscriberBenefitsData, blogMetaDataData, menuItemsData, authorsData }) {
   const allPosts = await getAllPostsForHome(preview)
   const subscribeModal = await getSubscribeModal(subscribeModalData)
   const blogMetaData = await getBlogPageMetaData(blogMetaDataData)
   const subscriberBenefits = await getSubscriberBenefits(subscriberBenefitsData)
   const menuItems = await getMenuItems(menuItemsData)
+  const authors = await getAuthors(authorsData)
   
   return {
     props: { 
@@ -51,6 +53,7 @@ export async function getStaticProps({ preview = false, subscribeModalData, subs
       subscriberBenefitsData: subscriberBenefits || null,
       blogMetaDataData: blogMetaData || null,
       menuItemsData: menuItems || null,
+      authorsData: authors || null,
      },
   }
 }
