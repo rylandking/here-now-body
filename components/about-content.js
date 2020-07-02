@@ -8,6 +8,7 @@ export default function AboutContent() {
         <div className="text-center">
           <h2 className="text-3xl leading-9 tracking-tight font-extrabold text-gray-900 sm:text-4xl sm:leading-10">
             Explore 
+            <br className="sm:hidden" />
             <span className="text-purple-600"> Here Now Body</span>
           </h2>
           <p className="mt-3 max-w-2xl mx-auto text-xl leading-7 text-gray-500 sm:mt-4">
