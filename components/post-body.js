@@ -33,25 +33,26 @@ export default function PostBody({ content, thanks, signOff, tweetEmbed }) {
         />
       </span>
       <p className="text-lg my-6">{signOff}</p>
-      <div className="flex justify-center mt-4 md:mx-10 md:mx-0">
+      <div className="flex justify-center mt-4">
         <TwitterTweetEmbed tweetId={tweetId} />
       </div>
       <style jsx global>{`
-          a {
-            text-decoration: underline;
-          }
-          h1, h2, h3, h4, h5, h6 {
-            color: #6b46c1;
-          }
-          @media (max-width: 768px) {
-            .twitter-tweet-rendered {
-              width: 88vw !important;
-            }
-            iframe {
-              width: 88vw !important;
-              height: 168px !important;
-            }
-          }
+        p {
+          color: #4a5568;
+        }
+        a {
+          text-decoration: underline;
+        }
+        h1, h2, h3, h4, h5, h6 {
+          color: #6b46c1;
+        }
+        iframe {
+          width: 88vw !important;
+          max-width:640px;
+        }
+        .grecaptcha-badge { 
+          visibility: hidden;
+        }
       `}</style>
     </div>
   )

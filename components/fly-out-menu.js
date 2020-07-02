@@ -33,10 +33,10 @@ export default function flyOutMenu({menuItems}) {
   let homeIcon = <svg fill="none" className="h-6 w-6" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>;
 
   return (
-    <div className={`absolute top-0 right-0 mt-16 px-2 w-screen max-w-md sm:px-0 lg:max-w-3xl ${menuView ? '' : 'hidden'}`}>
+    <div className={`z-20 absolute top-0 right-0 mt-16 px-2 w-screen max-w-md sm:px-0 lg:max-w-3xl ${menuView ? '' : 'hidden'}`}>
       <div className="rounded-lg shadow-lg">
         <div className="rounded-lg shadow-xs overflow-hidden">
-          <div className="z-20 relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8 lg:grid-cols-2">
+          <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8 lg:grid-cols-2">
             { router.pathname !== '/blog' ? (
               <FlyOutMenuItem 
                 icon={blogIcon}
@@ -64,23 +64,26 @@ export default function flyOutMenu({menuItems}) {
               />
               ) : ("") 
             }
-            <FlyOutMenuItem 
-              icon={aboutIcon}
-              title={about.title}
-              subtitle={about.subTitle}
-              link={"/about"}
-            />
+            { router.pathname !== '/about' ? (
+              <FlyOutMenuItem 
+                icon={aboutIcon}
+                title={about.title}
+                subtitle={about.subTitle}
+                link={"/about"}
+              />
+              ) : ("")
+            }
             { router.pathname !== '/' ? (
               <FlyOutMenuItem 
                 icon={homeIcon}
                 title={home.title}
                 subtitle={home.subTitle}
-                link={"/"}
+                link={`/`}
               />
               ) : ("") 
             }
           </div>
-          <div className="p-4 lg:p-5 border-t bg-white sm:p-8">
+          <div className="block p-4 lg:p-5 border-t bg-white sm:p-8">
             <span className="-m-3 py-3 sm:py-0 lg:py-3 flow-root space-y-1 rounded-md">
               <div className="flex justify-center items-center space-x-3">
                 <SubscribeFormHorizontal />

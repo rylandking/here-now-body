@@ -60,7 +60,15 @@ export default function HeaderBar({menuItems}) {
     menuTextColor = "text-white"
     borderB = ""
     cursor = "cursor-pointer"
-  } else {
+  } else if (router.pathname == '/about') {
+    icon = "";
+    title = "";
+    bg = "bg-white";
+    bgWrapper = "bg-white"
+    menuTextColor = "text-purple-600" 
+    borderB = ""
+    cursor = ""
+  }  else {
     icon = "";
     title = "";
     bg = "bg-white";

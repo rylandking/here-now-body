@@ -26,7 +26,7 @@ export default function SubscribeFormHorizontal() {
             </svg>
           </span>
         </div>
-        <div className="email-octopus-form-row w-48 sm:w-64">
+        <div className="email-octopus-form-row w-56 sm:w-64">
             <input 
               id="field_0" 
               name="field_0"
