@@ -2,9 +2,9 @@ import React from 'react'
 
 export default function AboutTitle() {
   return (
-    <main className="mx-auto max-w-screen-xl px-4 mt-0">
+    <main className=" px-4 mt-0">
       <div className="text-center">
-        <h2 className="text-5xl tracking-tight mb-5 md:mb-0 xl:mb-5 leading-10 font-extrabold text-gray-900 sm:leading-none md:text-6xl">
+        <h2 className="text-3xl tracking-tight mb-5 md:mb-0 xl:mb-5 leading-10 font-extrabold text-gray-900 sm:leading-none md:text-5xl xl:text-6xl">
           Your body is new
           <br className="xl:hidden" />
           <span className="text-purple-600"> every moment

@@ -35,6 +35,7 @@ export default function HeaderBar({menuItems}) {
   let menuTextColor;
   let borderB;
   let cursor;
+  let paddingR = "pr-3";
 
   if (router.pathname == `/podcasts`) {
     icon = podcastIcon;
@@ -43,6 +44,7 @@ export default function HeaderBar({menuItems}) {
     bgWrapper = "bg-purple-400"
     menuTextColor = "text-white"
     borderB = ""
+    paddingR
     cursor = "cursor-pointer"
   } else if (router.pathname == '/blog') {
     icon = blogIcon;
@@ -51,6 +53,7 @@ export default function HeaderBar({menuItems}) {
     bgWrapper = "bg-purple-400"
     menuTextColor = "text-white"
     borderB = ""
+    paddingR
     cursor = "cursor-pointer"
   } else if (router.pathname == '/studio') {
     icon = studioIcon;
@@ -59,6 +62,7 @@ export default function HeaderBar({menuItems}) {
     bgWrapper = "bg-purple-400"
     menuTextColor = "text-white"
     borderB = ""
+    paddingR
     cursor = "cursor-pointer"
   } else if (router.pathname == '/about') {
     icon = "";
@@ -67,6 +71,7 @@ export default function HeaderBar({menuItems}) {
     bgWrapper = "bg-white"
     menuTextColor = "text-purple-600" 
     borderB = ""
+    paddingR = "pr-0"
     cursor = ""
   }  else {
     icon = "";
@@ -75,6 +80,7 @@ export default function HeaderBar({menuItems}) {
     bgWrapper = "bg-white"
     menuTextColor = "text-purple-600" 
     borderB = "border-b"
+    paddingR
     cursor = ""
   }
 
@@ -108,7 +114,7 @@ export default function HeaderBar({menuItems}) {
           bg={bg}
           cursor={cursor}
          />  
-        <div className={`w-1/6 lg:w-1/4 flex justify-end flex-shrink-0 text-sm font-semibold pr-3 flex items-center ${bg}`}>
+        <div className={`w-1/6 lg:w-1/4 flex justify-end flex-shrink-0 text-sm font-semibold ${paddingR} flex items-center ${bg}`}>
           <button 
             type="button" 
             className={`group inline-flex items-center space-x-1 mr-2 text-base leading-6 font-bold focus:outline-none transition ease-in-out duration-150 ${menuTextColor}`}

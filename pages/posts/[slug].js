@@ -9,17 +9,13 @@ import ClickToShare from '../../components/click-to-share'
 import Testimonials from '../../components/testimonials'
 import Avatar from '../../components/avatar'
 import SubscribeFormWrapper from '../../components/subscribe-form-wrapper'
-import SubscribeFormStacked from '../../components/subscribe-form-stacked'
 import ExitIntentDiv from '../../components/exit-intent-div'
 import SubscribePanel from '../../components/subscribe-panel'
 import { getAllPostsWithSlug, getPostAndMorePosts, getTestimonials, getSubscribeModal, getSubscriberBenefits } from '../../lib/api'
 import PostTitle from '../../components/post-title'
-import Head from 'next/head'
 import useScript from '../../hooks/useScript';
-import { SITE_NAME } from '../../lib/constants'
 
 import { GlobalProvider } from '../../context/GlobalState'
-import SubscribeFormHorizontal from '../../components/subscribe-form-horizonal'
 
 export default function Post({ post, preview, testimonialData, subscribeModalData, subscriberBenefitsData }) {
 
@@ -83,7 +79,6 @@ export default function Post({ post, preview, testimonialData, subscribeModalDat
               />
             </>
           )}
-          {/* <SubscribeFormHorizontal /> */}
       </Layout>
     </GlobalProvider>
   )
