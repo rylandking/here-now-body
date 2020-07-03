@@ -1,19 +1,21 @@
 import Layout from '../components/layout'
 import HomeLayout from '../components/home-layout'
 import Meta from '../components/meta'
-import { getAllPostsForHome, getSubscribeModal, getSubscriberBenefits, getStudioPageMetaData, getMenuItems, getAuthors } from '../lib/api'
+import { getAllPostsForHome, getSubscribeModal, getSubscriberBenefits, getMetaData, getMenuItems, getAuthors } from '../lib/api'
 import useScript from '../hooks/useScript';
 
 import { GlobalProvider } from '../context/GlobalState'
 
-export default function Index({ allPosts, subscribeModalData, subscriberBenefitsData, studioMetaDataData, menuItemsData, authorsData }) {
+export default function Index({ allPosts, subscribeModalData, subscriberBenefitsData, metaDataData, menuItemsData, authorsData }) {
 
   useScript('https://emailoctopus.com/bundles/emailoctopuslist/js/1.5/formEmbed.js');
   useScript('https://emailoctopus.com/bundles/emailoctopuslist/js/1.5/recaptcha.js');
     
-  let pageTitle = studioMetaDataData[0].name;
-  let pageDescription = studioMetaDataData[0].description;
-  let pageImage = studioMetaDataData[0].image;
+  let meta = metaDataData.find(o => o.title === 'Studio');  
+  
+  let pageTitle = meta.name;
+  let pageDescription = meta.description;
+  let pageImage = meta.image;
   
   return (
     <GlobalProvider>
@@ -37,10 +39,10 @@ export default function Index({ allPosts, subscribeModalData, subscriberBenefits
   )
 }
 
-export async function getStaticProps({ preview = false, subscribeModalData, subscriberBenefitsData, studioMetaDataData, menuItemsData, authorsData }) {
+export async function getStaticProps({ preview = false, subscribeModalData, subscriberBenefitsData, metaDataData, menuItemsData, authorsData }) {
   const allPosts = await getAllPostsForHome(preview)
   const subscribeModal = await getSubscribeModal(subscribeModalData)
-  const studioMetaData = await getStudioPageMetaData(studioMetaDataData)
+  const metaData = await getMetaData(metaDataData)
   const subscriberBenefits = await getSubscriberBenefits(subscriberBenefitsData)
   const menuItems = await getMenuItems(menuItemsData)
   const authors = await getAuthors(authorsData)
@@ -51,7 +53,7 @@ export async function getStaticProps({ preview = false, subscribeModalData, subs
       preview,
       subscribeModalData: subscribeModal || null,
       subscriberBenefitsData: subscriberBenefits || null,
-      studioMetaDataData: studioMetaData || null,
+      metaDataData: metaData || null,
       menuItemsData: menuItems || null,
       authorsData: authors || null,
      },

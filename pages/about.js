@@ -6,19 +6,21 @@ import AboutDescription from '../components/about-description'
 import AboutEducation from '../components/about-education'
 import AboutContent from '../components/about-content'
 
-import { getSubscribeModal, getSubscriberBenefits, getAboutMeta, getMenuItems, getAuthors, getAbout } from '../lib/api'
+import { getSubscribeModal, getSubscriberBenefits, getMetaData, getMenuItems, getAuthors, getAbout } from '../lib/api'
 import useScript from '../hooks/useScript';
 
 import { GlobalProvider } from '../context/GlobalState'
 
-export default function Index({ subscribeModalData, subscriberBenefitsData, aboutMetaData, menuItemsData, authorsData, aboutsData }) {
+export default function Index({ subscribeModalData, subscriberBenefitsData, metaDataData, menuItemsData, aboutsData }) {
 
   useScript('https://emailoctopus.com/bundles/emailoctopuslist/js/1.5/formEmbed.js');
   useScript('https://emailoctopus.com/bundles/emailoctopuslist/js/1.5/recaptcha.js');
-      
-  let pageTitle = aboutMetaData[0].name;
-  let pageDescription = aboutMetaData[0].description;
-  let pageImage = aboutMetaData[0].author.picture; 
+
+  let meta = metaDataData.find(o => o.title === 'About');  
+  
+  let pageTitle = meta.name;
+  let pageDescription = meta.description;
+  let pageImage = meta.image;
 
   let titleBlack=aboutsData[0].titleBlack;
   let titlePurple=aboutsData[0].titlePurple;
@@ -86,22 +88,20 @@ export default function Index({ subscribeModalData, subscriberBenefitsData, abou
   )
 }
 
-export async function getStaticProps({ subscribeModalData, subscriberBenefitsData, aboutMetaData, menuItemsData, authorsData, aboutsData }) {
+export async function getStaticProps({ subscribeModalData, subscriberBenefitsData, metaDataData, menuItemsData, aboutsData }) {
   
   const subscribeModal = await getSubscribeModal(subscribeModalData)
-  const aboutMeta = await getAboutMeta(aboutMetaData)
+  const metaData = await getMetaData(metaDataData)
   const subscriberBenefits = await getSubscriberBenefits(subscriberBenefitsData)
   const menuItems = await getMenuItems(menuItemsData)
-  const authors = await getAuthors(authorsData)
   const abouts = await getAbout(aboutsData)
   
   return {
     props: { 
       subscribeModalData: subscribeModal || null,
       subscriberBenefitsData: subscriberBenefits || null,
-      aboutMetaData: aboutMeta || null,
+      metaDataData: metaData || null,
       menuItemsData: menuItems || null,
-      authorsData: authors || null,
       aboutsData: abouts || null,
      },
   }
