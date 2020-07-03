@@ -6,19 +6,19 @@ import AboutDescription from '../components/about-description'
 import AboutEducation from '../components/about-education'
 import AboutContent from '../components/about-content'
 
-import { getSubscribeModal, getSubscriberBenefits, getBlogPageMetaData, getMenuItems, getAuthors, getAbout } from '../lib/api'
+import { getSubscribeModal, getSubscriberBenefits, getAboutMeta, getMenuItems, getAuthors, getAbout } from '../lib/api'
 import useScript from '../hooks/useScript';
 
 import { GlobalProvider } from '../context/GlobalState'
 
-export default function Index({ subscribeModalData, subscriberBenefitsData, blogMetaDataData, menuItemsData, authorsData, aboutsData }) {
+export default function Index({ subscribeModalData, subscriberBenefitsData, aboutMetaData, menuItemsData, authorsData, aboutsData }) {
 
   useScript('https://emailoctopus.com/bundles/emailoctopuslist/js/1.5/formEmbed.js');
   useScript('https://emailoctopus.com/bundles/emailoctopuslist/js/1.5/recaptcha.js');
-    
-  let pageTitle = blogMetaDataData[0].name;
-  let pageDescription = blogMetaDataData[0].description;
-  let pageImage = blogMetaDataData[0].image;  
+      
+  let pageTitle = aboutMetaData[0].name;
+  let pageDescription = aboutMetaData[0].description;
+  let pageImage = aboutMetaData[0].author.picture; 
 
   let titleBlack=aboutsData[0].titleBlack;
   let titlePurple=aboutsData[0].titlePurple;
@@ -48,7 +48,7 @@ export default function Index({ subscribeModalData, subscriberBenefitsData, blog
           title={pageTitle} 
           description={pageDescription} 
           thumbnailImage={pageImage} 
-          pageType={'website'}
+          pageType={'article'}
         />
         <AboutNav
           menuItems={menuItemsData}
@@ -86,10 +86,10 @@ export default function Index({ subscribeModalData, subscriberBenefitsData, blog
   )
 }
 
-export async function getStaticProps({ subscribeModalData, subscriberBenefitsData, blogMetaDataData, menuItemsData, authorsData, aboutsData }) {
+export async function getStaticProps({ subscribeModalData, subscriberBenefitsData, aboutMetaData, menuItemsData, authorsData, aboutsData }) {
   
   const subscribeModal = await getSubscribeModal(subscribeModalData)
-  const blogMetaData = await getBlogPageMetaData(blogMetaDataData)
+  const aboutMeta = await getAboutMeta(aboutMetaData)
   const subscriberBenefits = await getSubscriberBenefits(subscriberBenefitsData)
   const menuItems = await getMenuItems(menuItemsData)
   const authors = await getAuthors(authorsData)
@@ -99,7 +99,7 @@ export async function getStaticProps({ subscribeModalData, subscriberBenefitsDat
     props: { 
       subscribeModalData: subscribeModal || null,
       subscriberBenefitsData: subscriberBenefits || null,
-      blogMetaDataData: blogMetaData || null,
+      aboutMetaData: aboutMeta || null,
       menuItemsData: menuItems || null,
       authorsData: authors || null,
       aboutsData: abouts || null,
