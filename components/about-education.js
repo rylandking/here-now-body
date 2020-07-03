@@ -4,7 +4,7 @@ import BlockContent from '@sanity/block-content-to-react'
 
 export default function AboutEducation({title, subtitle, headerOne, contentOne, headerTwo, contentTwo, headerThree, contentThree,}) {
   return (
-      <div className="relative mt-20 space-x-4">
+      <div className="relative mt-20 space-x-4 max-w-3xl">
         <div className="mb-6 mx-4">
           <h2 className="text-3xl leading-9 tracking-tight font-extrabold text-gray-900 sm:text-4xl sm:leading-10">
             {title}
