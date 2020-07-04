@@ -1,7 +1,27 @@
 import React from 'react'
 import Link from 'next/link'
 
-export default function AboutContent({titleBlack, titlePurple, subtitle}) {
+export default function AboutContent({titleBlack, titlePurple, subtitle, menuItems}) {
+
+  console.log(menuItems);
+  
+  let studio = menuItems.find(o => o.title === 'Studio');
+  let podcast = menuItems.find(o => o.title === 'Podcasts');
+  let blog = menuItems.find(o => o.title === 'Blog');
+
+  let sVerb = studio.verb
+  let sHnbTitle = studio.hnbTitle
+  let sCardTitle = studio.cardSubTitle
+  let sImage = studio.metaData.image
+  let pVerb = podcast.verb
+  let pHnbTitle = podcast.hnbTitle
+  let pCardTitle = podcast.cardSubTitle
+  let pImage = podcast.metaData.image
+  let bVerb = blog.verb
+  let bHnbTitle = blog.hnbTitle
+  let bCardTitle = blog.cardSubTitle
+  let bImage = blog.metaData.image
+
   return (
     <div className="relative bg-gray-50 pt-20 pb-20 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
       <div className="relative max-w-7xl mx-auto">
@@ -20,19 +40,19 @@ export default function AboutContent({titleBlack, titlePurple, subtitle}) {
             <Link href="/blog">
               <a>
                 <div className="flex-shrink-0">
-                  <img className="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80" alt="" />
+                  <img className="h-48 w-full object-cover" src={bImage} alt={bHnbTitle} />
                 </div>
                 <div className="flex-1 bg-white p-6 flex flex-col justify-between">
                   <div className="flex-1">
                     <p className="text-sm leading-5 font-medium text-indigo-600">
-                        Read
+                        {bVerb}
                     </p>
                     <div className="block">
                       <h3 className="mt-2 text-xl leading-7 font-semibold text-gray-900">
-                        Here Now Body Blog
+                        {bHnbTitle}
                       </h3>
                       <p className="mt-3 text-base leading-6 text-gray-500">
-                        Here we summarize the latest science about healing and wellness and provide tips for your life.
+                        {bCardTitle}
                       </p>
                     </div>
                   </div>
@@ -44,19 +64,19 @@ export default function AboutContent({titleBlack, titlePurple, subtitle}) {
             <Link href="/podcasts">
               <a>
                 <div className="flex-shrink-0">
-                  <img className="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1547586696-ea22b4d4235d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80" alt="" />
+                  <img className="h-48 w-full object-cover" src={pImage} alt={pHnbTitle} />
                 </div>
                 <div className="flex-1 bg-white p-6 flex flex-col justify-between">
                   <div className="flex-1">
                     <p className="text-sm leading-5 font-medium text-indigo-600">
-                      Listen
+                      {pVerb}
                     </p>
                     <div className="block">
                       <h3 className="mt-2 text-xl leading-7 font-semibold text-gray-900">
-                        Here Now Body Pod
+                        {pHnbTitle}
                       </h3>
                       <p className="mt-3 text-base leading-6 text-gray-500">
-                        Here explore journeys of healing from everyday people who learn how to find peace in their bodies here and now.
+                        {pCardTitle}
                       </p>
                     </div>
                   </div>
@@ -68,19 +88,19 @@ export default function AboutContent({titleBlack, titlePurple, subtitle}) {
             <Link href="/studio">
               <a>
                 <div className="flex-shrink-0">
-                  <img className="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1492724441997-5dc865305da7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80" alt="" />
+                  <img className="h-48 w-full object-cover" src={sImage} alt={sHnbTitle} />
                 </div>
                 <div className="flex-1 bg-white p-6 flex flex-col justify-between">
                   <div className="flex-1">
                     <p className="text-sm leading-5 font-medium text-indigo-600">
-                        Watch
+                      {sVerb}
                     </p>
                     <div className="block">
                       <h3 className="mt-2 text-xl leading-7 font-semibold text-gray-900">
-                        Here Now Body Studio
+                        {sHnbTitle}
                       </h3>
                       <p className="mt-3 text-base leading-6 text-gray-500">
-                        Here we put our learnings to work with some of my favorite classes.
+                        {sCardTitle}
                       </p>
                     </div>
                   </div>

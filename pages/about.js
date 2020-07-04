@@ -6,7 +6,7 @@ import AboutDescription from '../components/about-description'
 import AboutEducation from '../components/about-education'
 import AboutContent from '../components/about-content'
 
-import { getSubscribeModal, getSubscriberBenefits, getMetaData, getMenuItems, getAuthors, getAbout } from '../lib/api'
+import { getSubscribeModal, getSubscriberBenefits, getMetaData, getMenuItems, getAbout } from '../lib/api'
 import useScript from '../hooks/useScript';
 
 import { GlobalProvider } from '../context/GlobalState'
@@ -41,7 +41,6 @@ export default function Index({ subscribeModalData, subscriberBenefitsData, meta
   let exploreTitleBlack=aboutsData[0].exploreTitleBlack;
   let exploreTitlePurple=aboutsData[0].exploreTitlePurple;
   let exploreSubtitle=aboutsData[0].exploreSubtitle;
-  
 
   return (
     <GlobalProvider>
@@ -80,6 +79,7 @@ export default function Index({ subscribeModalData, subscriberBenefitsData, meta
               titleBlack={exploreTitleBlack}
               titlePurple={exploreTitlePurple}
               subtitle={exploreSubtitle}
+              menuItems={menuItemsData}
             />
           </div>
         </div>
@@ -91,8 +91,8 @@ export default function Index({ subscribeModalData, subscriberBenefitsData, meta
 export async function getStaticProps({ subscribeModalData, subscriberBenefitsData, metaDataData, menuItemsData, aboutsData }) {
   
   const subscribeModal = await getSubscribeModal(subscribeModalData)
-  const metaData = await getMetaData(metaDataData)
   const subscriberBenefits = await getSubscriberBenefits(subscriberBenefitsData)
+  const metaData = await getMetaData(metaDataData)
   const menuItems = await getMenuItems(menuItemsData)
   const abouts = await getAbout(aboutsData)
   
