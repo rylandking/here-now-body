@@ -18,7 +18,7 @@ export default function AboutContent({titleBlack, titlePurple, subtitle, menuIte
   let pCardTitle = podcast.cardSubTitle
   let pImage = podcast.metaData.image
   let bVerb = blog.verb
-  let bHnbTitle = blog.hnbTitle
+let bHnbTitle = blog.hnbTitle
   let bCardTitle = blog.cardSubTitle
   let bImage = blog.metaData.image
 
